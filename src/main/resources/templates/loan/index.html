@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+   <meta charset=" UTF-8">
+<title>Loan Buddy</title>
+</head>
+<body>
+<h1>All Loan Inquiries</h1>
+
+<ul>
+    <th:block th:each="loan: ${loanInquiries}">
+        <li th:text="${loan}"></li>
+    </th:block>
+</ul>
+</body>
+</html>
