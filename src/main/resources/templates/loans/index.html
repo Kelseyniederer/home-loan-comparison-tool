@@ -6,10 +6,7 @@
 </head>
 <body>
 <h1>All Loan Inquiries</h1>
-<nav>
-    <li><a href="/">Home</a></li>
-    <li><a href="/loans/new">New Loan Inquiry</a></li>
-</nav>
+<nav th:replace="fragments :: navigation"></nav>
 
 <p
     th:unless="${loanInquiries} and ${loanInquiries.size()}">No Loan Inquiries!
