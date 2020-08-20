@@ -16,7 +16,7 @@
     </thead>
 
     <tr th:each="loan: ${loanInquiries}">
-        <td th:text="${loan}"></td>
+        <td th:text="${loan.subjectProperty}"></td>
     </tr>
 </table>
 </body>
