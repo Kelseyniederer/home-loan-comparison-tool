@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>New Loan Inquiry</title>
+</head>
+<body>
+<h1>New Loan Inquiry</h1>
+
+<form method="post" action="/loans/new">
+    <label>Name
+    <input type="text" name="borrowersName"></label>
+
+    <label>Email
+    <input type="email" name="borrowersEmail"></label><br>
+<br>
+    <label>Estimated Credit Score
+        <input type="number" name="borrowersCreditScore"></label><br>
+<br>
+    <label>Subject Property Address
+        <input type="text" name="propertyAddress"></label><br>
+<br>
+    <label>Transaction Type
+    <input type="radio" id="purchase" name="transactionType" value="purchase">
+    <label for="purchase">Purchase</label>
+    <input type="radio" id="refinance" name="transactionType" value="refinance">
+    <label for="refinance">Refinance</label><br></label>
+
+    <label>If Refinance, what are your goals?
+        <input type="radio" id="lowerRate" name="refiGoals" value="lowerRate">
+        <label for="lowerRate">Lower Rate</label>
+        <input type="radio" id="lowerPayment" name="refiGoals" value="lowerPayment">
+        <label for="lowerPayment">Lower Payment</label>
+        <input type="radio" id="cash" name="refiGoals" value="cash">
+        <label for="cash">Cash In Hand</label><br></label>
+<br>
+
+
+    <label>Occupancy Type
+        <input type="radio" id="sfh" name="occupancyType" value="sfh">
+        <label for="sfh">Single Family Home</label>
+        <input type="radio" id="multFamilyHome" name="occupancyType" value="multFamilyHome">
+        <label for="multFamilyHome">Multiple Family Home</label>
+        <input type="radio" id="condo" name="occupancyType" value="condo">
+        <label for="condo">Condo</label><br></label><br>
+<br>
+    <label>Purchase Price $
+        <input type="number" name="purchasePrice"></label><br>
+    <br>
+    <label>Real Estate Taxes $
+        <input type="number" name="realEstateTaxes"></label><label>   Not Sure- assume 1.25% if in MO
+    <input type="radio" name="estimatedTaxMO"></label><br>
+    <br>
+    <label>Home Owners Insurance $
+        <input type="number" name="homeOwnersInsurance"></label><br>
+<br>
+    <label>Loan Term (How long do you want to pay the loan back?)
+        <input type="radio" id="30year" name="loanTerm" value="30year">
+        <label for="30year">30 Years</label>
+        <input type="radio" id="20year" name="loanTerm" value="20year">
+        <label for="20year">20 Years</label>
+        <input type="radio" id="15year" name="loanTerm" value="15year">
+        <label for="15year">15 Years</label><br></label>
+        <input type="radio" id="arm" name="loanTerm" value="arm">
+        <label for="arm">Adjustable Rate Mortgage</label><br></label><br>
+
+    <br>
+    <input type="submit" value="See Your Options">
+</form>
+</body>
+</html>

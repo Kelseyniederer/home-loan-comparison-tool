@@ -6,7 +6,10 @@
 </head>
 <body>
 <h1>All Loan Inquiries</h1>
-
+<nav>
+    <li><a href="/">Home</a></li>
+    <li><a href="/loans/new">New Loan Inquiry</a></li>
+</nav>
 <ul>
     <th:block th:each="loan: ${loanInquiries}">
         <li th:text="${loan}"></li>
