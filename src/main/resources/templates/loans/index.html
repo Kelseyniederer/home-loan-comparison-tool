@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 <h1>All Loan Inquiries</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
 <p
     th:unless="${loanInquiries} and ${loanInquiries.size()}">No Loan Inquiries!
 </p>
-<ul>
-    <th:block th:each="loan: ${loanInquiries}">
-        <li th:text="${loan}"></li>
-    </th:block>
-</ul>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Subject Property</th>
+    </tr>
+    </thead>
+
+    <tr th:each="loan: ${loanInquiries}">
+        <td th:text="${loan}"></td>
+    </tr>
+</table>
 </body>
 </html>
