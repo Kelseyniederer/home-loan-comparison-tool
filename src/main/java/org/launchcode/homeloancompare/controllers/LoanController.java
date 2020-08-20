@@ -29,8 +29,9 @@ public class LoanController {
     }
 
     @PostMapping("new")
-    public String processNewLoanInquiryForm(@RequestParam String propertyAddress){
-        loanInquiries.add(new LoanInquiry(propertyAddress));
+    public String processNewLoanInquiryForm(@RequestParam String propertyAddress,
+    @RequestParam String borrowersName){
+        loanInquiries.add(new LoanInquiry(propertyAddress, borrowersName));
         return "redirect:";
     }
 }
