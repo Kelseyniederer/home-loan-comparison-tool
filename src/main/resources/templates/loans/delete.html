@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1>All Loan Inquiries</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+
+
+    <th:block th:each="loan: ${loanInquiries}">
+        <div class="form-group">
+            <label>
+                <span th:text="${loan.subjectProperty}"></span>
+                <input type="checkbox" name="loanIds" th:value="${loan.id}" class=".checkbox-inline">
+            </label>
+    </th:block>
+    </div>
+    <input type="submit" value="Delete" class="btn btn-danger">
+</form>
+</body>
+</html>

@@ -33,4 +33,21 @@ public class LoanController {
         LoanInquiryData.add(new LoanInquiry(propertyAddress, borrowersName));
         return "redirect:";
     }
+
+    @GetMapping("delete")
+    public String displayDeleteLoanInquiryForm(Model model){
+        model.addAttribute("title", "Delete Loan Inquiries");
+        model.addAttribute("loanInquiries", LoanInquiryData.getAll());
+        return "loans/delete";
+    }
+
+    @PostMapping("delete")
+    public String processDeleteLoanInquiryForm(@RequestParam(required = false) int[] loanIds) {
+        if (loanIds != null) {
+            for (int id : loanIds) {
+                LoanInquiryData.remove(id);
+            }
+        }
+        return "redirect:";
+    }
 }
