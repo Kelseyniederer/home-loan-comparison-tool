@@ -11,12 +11,14 @@
 <table class="table table-striped">
     <thead>
     <tr>
+        <th>ID</th>
         <th>Borrower</th>
         <th>Subject Property</th>
     </tr>
     </thead>
 
     <tr th:each="loan: ${loanInquiries}">
+        <td th:text="${loan.id}"></td>
         <td th:text="${loan.borrowersName}"></td>
         <td th:text="${loan.subjectProperty}"></td>
     </tr>

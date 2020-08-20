@@ -1,8 +1,12 @@
 package org.launchcode.homeloancompare.models;
 
 
+import java.util.Objects;
 
 public class LoanInquiry {
+
+    private int id;
+    private static int nextId = 1;
 
     private String subjectProperty;
     private String borrowersName;
@@ -10,6 +14,8 @@ public class LoanInquiry {
     public LoanInquiry(String subjectProperty, String borrowersName) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
+        this.id = nextId;
+        nextId++;
     }
 
     public String getSubjectProperty() {
@@ -29,8 +35,25 @@ public class LoanInquiry {
         this.borrowersName = borrowersName;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return subjectProperty;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LoanInquiry that = (LoanInquiry) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
