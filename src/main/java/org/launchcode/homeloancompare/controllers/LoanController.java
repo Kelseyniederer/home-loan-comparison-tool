@@ -1,5 +1,6 @@
 package org.launchcode.homeloancompare.controllers;
 
+import org.launchcode.homeloancompare.data.LoanInquiryData;
 import org.launchcode.homeloancompare.models.LoanInquiry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,9 @@ import java.util.List;
 @RequestMapping("loans")
 public class LoanController {
 
-    private static List<LoanInquiry> loanInquiries = new ArrayList<>();
-
     @GetMapping
     public String displayAllLoanInquiries(Model model){
-        model.addAttribute("loanInquiries", loanInquiries);
+        model.addAttribute("loanInquiries", LoanInquiryData.getAll());
         return "loans/index";
     }
 
@@ -31,7 +30,7 @@ public class LoanController {
     @PostMapping("new")
     public String processNewLoanInquiryForm(@RequestParam String propertyAddress,
     @RequestParam String borrowersName){
-        loanInquiries.add(new LoanInquiry(propertyAddress, borrowersName));
+        LoanInquiryData.add(new LoanInquiry(propertyAddress, borrowersName));
         return "redirect:";
     }
 }
