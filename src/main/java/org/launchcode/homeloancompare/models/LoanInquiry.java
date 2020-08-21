@@ -1,13 +1,13 @@
 package org.launchcode.homeloancompare.models;
 
-
+import javax.validation.constraints.Size;
 import java.util.Objects;
-
 public class LoanInquiry {
 
     private int id;
     private static int nextId = 1;
 
+    @Size
     private String subjectProperty;
     private String borrowersName;
 
