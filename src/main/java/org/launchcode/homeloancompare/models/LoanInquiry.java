@@ -1,5 +1,7 @@
 package org.launchcode.homeloancompare.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 public class LoanInquiry {
@@ -7,13 +9,24 @@ public class LoanInquiry {
     private int id;
     private static int nextId = 1;
 
-    @Size
+
+    @Size(min = 3, max = 75, message = "Address must be between 3 and 75 characters")
+    @NotBlank
     private String subjectProperty;
+
+
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
+    @NotBlank
     private String borrowersName;
 
-    public LoanInquiry(String subjectProperty, String borrowersName) {
+    @NotBlank
+    @Email(message = "Invalid Email")
+    private String borrowersEmail;
+
+    public LoanInquiry(String subjectProperty, String borrowersName, String borrowersEmail) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
+        this.borrowersEmail = borrowersEmail;
         this.id = nextId;
         nextId++;
     }
@@ -37,6 +50,14 @@ public class LoanInquiry {
 
     public int getId() {
         return id;
+    }
+
+    public String getBorrowersEmail() {
+        return borrowersEmail;
+    }
+
+    public void setBorrowersEmail(String borrowersEmail) {
+        this.borrowersEmail = borrowersEmail;
     }
 
     @Override

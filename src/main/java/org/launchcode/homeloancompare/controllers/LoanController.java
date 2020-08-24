@@ -4,10 +4,10 @@ import org.launchcode.homeloancompare.data.LoanInquiryData;
 import org.launchcode.homeloancompare.models.LoanInquiry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("loans")
@@ -25,7 +25,12 @@ public class LoanController {
     }
 
     @PostMapping("new")
-    public String processNewLoanInquiryForm(@ModelAttribute LoanInquiry newLoanInquiry){
+    public String processNewLoanInquiryForm(@ModelAttribute @Valid LoanInquiry newLoanInquiry,
+                                            Errors errors){
+        if(errors.hasErrors()){
+            return "loans/new";
+        }
+
         LoanInquiryData.add(newLoanInquiry);
         return "redirect:";
     }
