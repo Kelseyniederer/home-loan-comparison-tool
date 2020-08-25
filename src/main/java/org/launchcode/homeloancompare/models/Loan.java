@@ -1,35 +1,49 @@
 package org.launchcode.homeloancompare.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.*;
 import java.util.Objects;
-public class LoanInquiry {
+public class Loan {
 
     private int id;
     private static int nextId = 1;
 
 
     @Size(min = 3, max = 75, message = "Address must be between 3 and 75 characters")
-    @NotBlank
+    @NotEmpty(message = "Please enter property address")
     private String subjectProperty;
 
 
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
-    @NotBlank
+    @NotEmpty(message = "Please enter your name")
     private String borrowersName;
 
-    @NotBlank
+    @NotEmpty(message = "Please enter your email address")
     @Email(message = "Invalid Email")
     private String borrowersEmail;
 
-    public LoanInquiry(String subjectProperty, String borrowersName, String borrowersEmail) {
+    @NotNull(message = "Please enter your estimated credit score")
+    @NumberFormat
+    private Integer estimatedCreditScore;
+
+    private Integer purchasePrice;
+
+    private Integer homeOwnersInsurance;
+
+    public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
+                       Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
         this.borrowersEmail = borrowersEmail;
+        this.estimatedCreditScore = estimatedCreditScore;
+        this.purchasePrice = purchasePrice;
+        this.homeOwnersInsurance = homeOwnersInsurance;
         this.id = nextId;
         nextId++;
     }
+
+    public Loan(){}
 
     public String getSubjectProperty() {
         return subjectProperty;
@@ -60,6 +74,30 @@ public class LoanInquiry {
         this.borrowersEmail = borrowersEmail;
     }
 
+    public Integer getEstimatedCreditScore() {
+        return estimatedCreditScore;
+    }
+
+    public void setEstimatedCreditScore(Integer estimatedCreditScore) {
+        this.estimatedCreditScore = estimatedCreditScore;
+    }
+
+    public Integer getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(Integer purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public Integer getHomeOwnersInsurance() {
+        return homeOwnersInsurance;
+    }
+
+    public void setHomeOwnersInsurance(Integer homeOwnersInsurance) {
+        this.homeOwnersInsurance = homeOwnersInsurance;
+    }
+
     @Override
     public String toString() {
         return subjectProperty;
@@ -69,7 +107,7 @@ public class LoanInquiry {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        LoanInquiry that = (LoanInquiry) o;
+        Loan that = (Loan) o;
         return id == that.id;
     }
 

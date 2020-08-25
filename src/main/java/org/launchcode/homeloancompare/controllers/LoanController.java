@@ -1,7 +1,7 @@
 package org.launchcode.homeloancompare.controllers;
 
 import org.launchcode.homeloancompare.data.LoanInquiryData;
-import org.launchcode.homeloancompare.models.LoanInquiry;
+import org.launchcode.homeloancompare.models.Loan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -20,14 +20,16 @@ public class LoanController {
     }
 
     @GetMapping("new")
-    public String renderNewLoanInquiryForm(){
+    public String renderNewLoanInquiryForm(Model model){
+        model.addAttribute( new Loan());
         return "loans/new";
     }
 
     @PostMapping("new")
-    public String processNewLoanInquiryForm(@ModelAttribute @Valid LoanInquiry newLoanInquiry,
-                                            Errors errors){
+    public String processNewLoanInquiryForm(@ModelAttribute @Valid Loan newLoanInquiry,
+                                            Errors errors, Model model){
         if(errors.hasErrors()){
+
             return "loans/new";
         }
 
