@@ -33,9 +33,11 @@ public class Loan {
 
     private TransactionType transactionType;
 
+    private PropertyType propertyType;
+
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
                        Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
-                TransactionType transactionType) {
+                TransactionType transactionType, PropertyType propertyType) {
         this();
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
@@ -44,6 +46,7 @@ public class Loan {
         this.purchasePrice = purchasePrice;
         this.homeOwnersInsurance = homeOwnersInsurance;
         this.transactionType = transactionType;
+        this.propertyType = propertyType;
     }
 
     public Loan(){
@@ -110,6 +113,14 @@ public class Loan {
 
     public void setTransactionType(TransactionType transactionType) {
         this.transactionType = transactionType;
+    }
+
+    public PropertyType getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(PropertyType propertyType) {
+        this.propertyType = propertyType;
     }
 
     @Override
