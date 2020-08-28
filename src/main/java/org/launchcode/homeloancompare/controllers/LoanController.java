@@ -2,6 +2,7 @@ package org.launchcode.homeloancompare.controllers;
 
 import org.launchcode.homeloancompare.data.LoanInquiryData;
 import org.launchcode.homeloancompare.models.Loan;
+import org.launchcode.homeloancompare.models.OccupancyType;
 import org.launchcode.homeloancompare.models.PropertyType;
 import org.launchcode.homeloancompare.models.TransactionType;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class LoanController {
         model.addAttribute( new Loan());
         model.addAttribute("transactionType", TransactionType.values());
         model.addAttribute("propertyType", PropertyType.values());
+        model.addAttribute("occupancyType", OccupancyType.values());
         return "loans/new";
     }
 

@@ -35,9 +35,11 @@ public class Loan {
 
     private PropertyType propertyType;
 
+    private OccupancyType occupancyType;
+
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
                        Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
-                TransactionType transactionType, PropertyType propertyType) {
+                TransactionType transactionType, PropertyType propertyType, OccupancyType occupancyType) {
         this();
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
@@ -47,6 +49,7 @@ public class Loan {
         this.homeOwnersInsurance = homeOwnersInsurance;
         this.transactionType = transactionType;
         this.propertyType = propertyType;
+        this.occupancyType = occupancyType;
     }
 
     public Loan(){
@@ -121,6 +124,14 @@ public class Loan {
 
     public void setPropertyType(PropertyType propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public OccupancyType getOccupancyType() {
+        return occupancyType;
+    }
+
+    public void setOccupancyType(OccupancyType occupancyType) {
+        this.occupancyType = occupancyType;
     }
 
     @Override

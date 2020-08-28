@@ -57,6 +57,17 @@
         </label>
     </div>
 
+    <div class="form-group">
+        <label>Occupancy Type
+            <select th:field="${loan.occupancyType}">
+                <option th:each="type : ${occupancyType}"
+                        th:value="${type}"
+                        th:text="${type.displayName}"
+                ></option>
+            </select>
+        </label>
+    </div>
+
 
     <div class="form-group">
     <label>Purchase Price $
