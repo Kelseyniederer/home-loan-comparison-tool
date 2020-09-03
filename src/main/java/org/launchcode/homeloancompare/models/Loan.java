@@ -1,14 +1,23 @@
 package org.launchcode.homeloancompare.models;
-
 import org.springframework.format.annotation.NumberFormat;
 
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.Objects;
+
+
+@Entity
 public class Loan {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
-
 
     @Size(min = 3, max = 75, message = "Address must be between 3 and 75 characters")
     @NotEmpty(message = "Please enter property address")
@@ -37,10 +46,14 @@ public class Loan {
 
     private OccupancyType occupancyType;
 
+    private Date closingDate;
+
+    private Date firstPaymentDate;
+
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
                        Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
-                TransactionType transactionType, PropertyType propertyType, OccupancyType occupancyType) {
-        this();
+                TransactionType transactionType, PropertyType propertyType, OccupancyType occupancyType, Date closingDate,
+                Date firstPaymentDate) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
         this.borrowersEmail = borrowersEmail;
@@ -50,12 +63,11 @@ public class Loan {
         this.transactionType = transactionType;
         this.propertyType = propertyType;
         this.occupancyType = occupancyType;
+        this.closingDate = closingDate;
+        this.firstPaymentDate = firstPaymentDate;
     }
 
-    public Loan(){
-        this.id = nextId;
-        nextId++;
-    }
+    public Loan(){}
 
     public String getSubjectProperty() {
         return subjectProperty;
@@ -132,6 +144,22 @@ public class Loan {
 
     public void setOccupancyType(OccupancyType occupancyType) {
         this.occupancyType = occupancyType;
+    }
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
+    }
+
+    public Date getFirstPaymentDate() {
+        return firstPaymentDate;
+    }
+
+    public void setFirstPaymentDate(Date firstPaymentDate) {
+        this.firstPaymentDate = firstPaymentDate;
     }
 
     @Override
