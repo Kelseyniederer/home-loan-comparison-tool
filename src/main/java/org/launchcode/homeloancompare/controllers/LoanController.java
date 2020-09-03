@@ -1,10 +1,11 @@
 package org.launchcode.homeloancompare.controllers;
 
-import org.launchcode.homeloancompare.data.LoanInquiryData;
+import org.launchcode.homeloancompare.data.LoanRepository;
 import org.launchcode.homeloancompare.models.Loan;
 import org.launchcode.homeloancompare.models.OccupancyType;
 import org.launchcode.homeloancompare.models.PropertyType;
 import org.launchcode.homeloancompare.models.TransactionType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,9 +17,12 @@ import javax.validation.Valid;
 @RequestMapping("loans")
 public class LoanController {
 
+    @Autowired
+    private LoanRepository loanRepository;
+
     @GetMapping
     public String displayAllLoanInquiries(Model model){
-        model.addAttribute("loanInquiries", LoanInquiryData.getAll());
+        model.addAttribute("loanInquiries", loanRepository.findAll());
         return "loans/index";
     }
 
@@ -38,14 +42,14 @@ public class LoanController {
             return "loans/new";
         }
 
-        LoanInquiryData.add(newLoanInquiry);
+        loanRepository.save(newLoanInquiry);
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String displayDeleteLoanInquiryForm(Model model){
         model.addAttribute("title", "Delete Loan Inquiries");
-        model.addAttribute("loanInquiries", LoanInquiryData.getAll());
+        model.addAttribute("loanInquiries", loanRepository.findAll());
         return "loans/delete";
     }
 
@@ -53,7 +57,7 @@ public class LoanController {
     public String processDeleteLoanInquiryForm(@RequestParam(required = false) int[] loanIds) {
         if (loanIds != null) {
             for (int id : loanIds) {
-                LoanInquiryData.remove(id);
+                loanRepository.deleteById(id);
             }
         }
         return "redirect:";
