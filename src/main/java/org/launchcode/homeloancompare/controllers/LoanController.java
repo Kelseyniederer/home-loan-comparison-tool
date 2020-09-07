@@ -20,6 +20,7 @@ public class LoanController {
     @Autowired
     private LoanRepository loanRepository;
 
+
     @GetMapping
     public String displayAllLoanInquiries(Model model){
         model.addAttribute("loanInquiries", loanRepository.findAll());
