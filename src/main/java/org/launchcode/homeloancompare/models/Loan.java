@@ -1,28 +1,19 @@
 package org.launchcode.homeloancompare.models;
 import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Objects;
 
 
 @Entity
-public class Loan {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class Loan extends AbstractEntity{
 
     @Size(min = 3, max = 75, message = "Address must be between 3 and 75 characters")
     @NotEmpty(message = "Please enter property address")
     private String subjectProperty;
-
 
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     @NotEmpty(message = "Please enter your name")
@@ -51,7 +42,7 @@ public class Loan {
     private Date firstPaymentDate;
 
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
-                       Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
+                Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
                 TransactionType transactionType, PropertyType propertyType, OccupancyType occupancyType, Date closingDate,
                 Date firstPaymentDate) {
         this.subjectProperty = subjectProperty;
@@ -84,10 +75,6 @@ public class Loan {
 
     public void setBorrowersName(String borrowersName) {
         this.borrowersName = borrowersName;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getBorrowersEmail() {
@@ -167,16 +154,4 @@ public class Loan {
         return subjectProperty;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Loan that = (Loan) o;
-        return id == that.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
