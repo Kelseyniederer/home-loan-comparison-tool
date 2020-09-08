@@ -1,6 +1,8 @@
 package org.launchcode.homeloancompare.models;
 import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -35,7 +37,9 @@ public class Loan extends AbstractEntity{
 
     private PropertyType propertyType;
 
-    private OccupancyType occupancyType;
+    @ManyToOne
+    @NotNull(message = "Occupancy Type is Required")
+    private OccupancyCategory occupancyCategory;
 
     private Date closingDate;
 
@@ -43,7 +47,7 @@ public class Loan extends AbstractEntity{
 
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
                 Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
-                TransactionType transactionType, PropertyType propertyType, OccupancyType occupancyType, Date closingDate,
+                TransactionType transactionType, PropertyType propertyType, OccupancyCategory occupancyCategory, Date closingDate,
                 Date firstPaymentDate) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
@@ -51,9 +55,9 @@ public class Loan extends AbstractEntity{
         this.estimatedCreditScore = estimatedCreditScore;
         this.purchasePrice = purchasePrice;
         this.homeOwnersInsurance = homeOwnersInsurance;
+        this.occupancyCategory = occupancyCategory;
         this.transactionType = transactionType;
         this.propertyType = propertyType;
-        this.occupancyType = occupancyType;
         this.closingDate = closingDate;
         this.firstPaymentDate = firstPaymentDate;
     }
@@ -125,12 +129,12 @@ public class Loan extends AbstractEntity{
         this.propertyType = propertyType;
     }
 
-    public OccupancyType getOccupancyType() {
-        return occupancyType;
+    public OccupancyCategory getOccupancyCategory() {
+        return occupancyCategory;
     }
 
-    public void setOccupancyType(OccupancyType occupancyType) {
-        this.occupancyType = occupancyType;
+    public void setOccupancyCategory(OccupancyCategory occupancyCategory) {
+        this.occupancyCategory = occupancyCategory;
     }
 
     public Date getClosingDate() {
