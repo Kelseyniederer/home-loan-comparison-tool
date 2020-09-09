@@ -2,22 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1>All Occupancy Types</h1>
+<h1>All Property Types</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
 <nav>
-    <a class="nav-item" href="/occupancyCategories/create">Create New</a>
-    <a  class="nav-item" href="/occupancyCategories/delete">Delete</a>
+    <a class="nav-item" href="/propertyCategories/create">Create</a>
+    <a  class="nav-item" href="/propertyCategories/delete">Delete</a>
 </nav>
 
 
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Occupancy Types</th>
+        <th>Property Types</th>
     </tr>
     </thead>
-    <tr th:each="category : ${occupancyCategories}">
+    <tr th:each="category : ${propertyCategories}">
         <td th:text="${category.name}"></td>
     </tr>
 

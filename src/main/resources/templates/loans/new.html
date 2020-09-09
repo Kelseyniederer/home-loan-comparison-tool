@@ -28,16 +28,17 @@
 
     </div>
 
-<!--    <div class="form-group">-->
-<!--        <label>Transaction Type-->
-<!--            <select th:field="${loan.transactionType}">-->
-<!--                <option th:each="type : ${transactionType}"-->
-<!--                        th:value="${type}"-->
-<!--                        th:text="${type.displayName}"-->
-<!--                ></option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--    </div>-->
+    <div class="form-group">
+        <label>Transaction Type
+            <select th:field="${loan.transactionCategory}">
+                <option th:each="category : ${transactionCategories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}"
+                ></option>
+            </select>
+        </label>
+    </div>
+
 
     <div class="form-group">
     <label>Estimated Credit Score
@@ -46,21 +47,22 @@
 
     </div>
 
-<!--    <div class="form-group">-->
-<!--        <label>Property Type-->
-<!--            <select th:field="${loan.propertyType}">-->
-<!--                <option th:each="type : ${propertyType}"-->
-<!--                        th:value="${type}"-->
-<!--                        th:text="${type.displayName}"-->
-<!--                ></option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--    </div>-->
+    <div class="form-group">
+        <label>Property Type
+            <select th:field="${loan.propertyCategory}">
+                <option th:each="category : ${propertyCategories}"
+                        th:value="${category.id}"
+                        th:text="${category.name}"
+                ></option>
+            </select>
+        </label>
+    </div>
+
 
     <div class="form-group">
         <label>Occupancy Type
             <select th:field="${loan.occupancyCategory}">
-                <option th:each="category : ${occupancyCategory}"
+                <option th:each="category : ${occupancyCategories}"
                         th:value="${category.id}"
                         th:text="${category.name}"
                 ></option>
@@ -87,7 +89,6 @@
 
 
     <div class="form-group">
-        <input type="submit" value="See Your Options" class="btn btn-success"></div>
-</form>
+        <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
 </body>
 </html>

@@ -2,21 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1>All Loan Inquiries</h1>
+<h1>All Property Categories</h1>
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post">
 
 
-    <th:block th:each="loan: ${loanInquiries}">
+    <th:block th:each="category: ${propertyCategories}">
         <div class="form-group">
             <label>
-                <span th:text="${loan.subjectProperty}"></span>
-                <input type="checkbox" name="loanIds" th:value="${loan.id}" class=".checkbox-inline">
+                <span th:text="${category.name}"></span>
+                <input type="checkbox" name="propertyCategoryIds" th:value="${category.id}" class=".checkbox-inline">
             </label>
         </div>
     </th:block>
-
     <input type="submit" value="Delete" class="btn btn-danger">
 </form>
 </body>

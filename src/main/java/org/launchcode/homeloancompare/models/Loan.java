@@ -33,13 +33,18 @@ public class Loan extends AbstractEntity{
 
     private Integer homeOwnersInsurance;
 
-    private TransactionType transactionType;
-
-    private PropertyType propertyType;
 
     @ManyToOne
     @NotNull(message = "Occupancy Type is Required")
     private OccupancyCategory occupancyCategory;
+
+    @ManyToOne
+    @NotNull(message = "Property Type is Required")
+    private PropertyCategory propertyCategory;
+
+    @ManyToOne
+    @NotNull(message = "Transaction Type is Required")
+    private TransactionCategory transactionCategory;
 
     private Date closingDate;
 
@@ -47,7 +52,7 @@ public class Loan extends AbstractEntity{
 
     public Loan(String subjectProperty, String borrowersName, String borrowersEmail,
                 Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance,
-                TransactionType transactionType, PropertyType propertyType, OccupancyCategory occupancyCategory, Date closingDate,
+                TransactionCategory transactionCategory, PropertyCategory propertyCategory, OccupancyCategory occupancyCategory, Date closingDate,
                 Date firstPaymentDate) {
         this.subjectProperty = subjectProperty;
         this.borrowersName = borrowersName;
@@ -56,8 +61,8 @@ public class Loan extends AbstractEntity{
         this.purchasePrice = purchasePrice;
         this.homeOwnersInsurance = homeOwnersInsurance;
         this.occupancyCategory = occupancyCategory;
-        this.transactionType = transactionType;
-        this.propertyType = propertyType;
+        this.propertyCategory = propertyCategory;
+        this.transactionCategory = transactionCategory;
         this.closingDate = closingDate;
         this.firstPaymentDate = firstPaymentDate;
     }
@@ -113,21 +118,6 @@ public class Loan extends AbstractEntity{
         this.homeOwnersInsurance = homeOwnersInsurance;
     }
 
-    public TransactionType getTransactionType() {
-        return transactionType;
-    }
-
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public PropertyType getPropertyType() {
-        return propertyType;
-    }
-
-    public void setPropertyType(PropertyType propertyType) {
-        this.propertyType = propertyType;
-    }
 
     public OccupancyCategory getOccupancyCategory() {
         return occupancyCategory;
@@ -135,6 +125,22 @@ public class Loan extends AbstractEntity{
 
     public void setOccupancyCategory(OccupancyCategory occupancyCategory) {
         this.occupancyCategory = occupancyCategory;
+    }
+
+    public PropertyCategory getPropertyCategory() {
+        return propertyCategory;
+    }
+
+    public void setPropertyCategory(PropertyCategory propertyCategory) {
+        this.propertyCategory = propertyCategory;
+    }
+
+    public TransactionCategory getTransactionCategory() {
+        return transactionCategory;
+    }
+
+    public void setTransactionCategory(TransactionCategory transactionCategory) {
+        this.transactionCategory = transactionCategory;
     }
 
     public Date getClosingDate() {

@@ -2,6 +2,8 @@ package org.launchcode.homeloancompare.controllers;
 
 import org.launchcode.homeloancompare.data.LoanRepository;
 import org.launchcode.homeloancompare.data.OccupancyCategoryRepository;
+import org.launchcode.homeloancompare.data.PropertyCategoryRepository;
+import org.launchcode.homeloancompare.data.TransactionCategoryRepository;
 import org.launchcode.homeloancompare.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,12 @@ public class LoanController {
     @Autowired
     private OccupancyCategoryRepository occupancyCategoryRepository;
 
+    @Autowired
+    private PropertyCategoryRepository propertyCategoryRepository;
+
+    @Autowired
+    private TransactionCategoryRepository transactionCategoryRepository;
+
     @GetMapping
     public String displayAllLoanInquiries(Model model){
         model.addAttribute("loanInquiries", loanRepository.findAll());
@@ -30,8 +38,8 @@ public class LoanController {
     @GetMapping("new")
     public String renderNewLoanInquiryForm(Model model){
         model.addAttribute( new Loan());
-        model.addAttribute("transactionType", TransactionType.values());
-        model.addAttribute("propertyType", PropertyType.values());
+        model.addAttribute("transactionType", transactionCategoryRepository.findAll());
+        model.addAttribute("propertyType",  propertyCategoryRepository.findAll());
         model.addAttribute("occupancyCategory", occupancyCategoryRepository.findAll());
         return "loans/new";
     }
