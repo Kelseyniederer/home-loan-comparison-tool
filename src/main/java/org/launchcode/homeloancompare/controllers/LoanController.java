@@ -4,7 +4,8 @@ import org.launchcode.homeloancompare.data.LoanRepository;
 import org.launchcode.homeloancompare.data.OccupancyCategoryRepository;
 import org.launchcode.homeloancompare.data.PropertyCategoryRepository;
 import org.launchcode.homeloancompare.data.TransactionCategoryRepository;
-import org.launchcode.homeloancompare.models.*;
+import org.launchcode.homeloancompare.models.Loan;
+import org.launchcode.homeloancompare.models.OccupancyCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("loans")
@@ -30,8 +32,20 @@ public class LoanController {
     private TransactionCategoryRepository transactionCategoryRepository;
 
     @GetMapping
-    public String displayAllLoanInquiries(Model model){
+    public String displayAllLoanInquiries(@RequestParam(required = false) Integer occupancyCategoryId, Model model){
+        if (occupancyCategoryId == null){
         model.addAttribute("loanInquiries", loanRepository.findAll());
+        }else {
+           Optional<OccupancyCategory> result = occupancyCategoryRepository.findById(occupancyCategoryId);
+           if(result.isEmpty()){
+               model.addAttribute("title", "Invalid Occupancy Type: " + occupancyCategoryId);
+           } else {
+               OccupancyCategory occupancyCategory = result.get();
+               model.addAttribute("title", "Loan Inquiries with Occupancy Type " + occupancyCategory.getName());
+               model.addAttribute("loans", occupancyCategory.getLoans());
+           }
+        }
+
         return "loans/index";
     }
 
