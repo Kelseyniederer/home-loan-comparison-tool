@@ -31,7 +31,7 @@
     <div class="form-group">
         <label>Transaction Type
             <select th:field="${loan.transactionCategory}">
-                <option th:each="category : ${transactionCategories}"
+                <option th:each="category : ${transactionType}"
                         th:value="${category.id}"
                         th:text="${category.name}"
                 ></option>
@@ -50,7 +50,7 @@
     <div class="form-group">
         <label>Property Type
             <select th:field="${loan.propertyCategory}">
-                <option th:each="category : ${propertyCategories}"
+                <option th:each="category : ${propertyType}"
                         th:value="${category.id}"
                         th:text="${category.name}"
                 ></option>
@@ -62,7 +62,7 @@
     <div class="form-group">
         <label>Occupancy Type
             <select th:field="${loan.occupancyCategory}">
-                <option th:each="category : ${occupancyCategories}"
+                <option th:each="category : ${occupancyCategory}"
                         th:value="${category.id}"
                         th:text="${category.name}"
                 ></option>
