@@ -38,9 +38,9 @@ public class LoanController {
     @GetMapping("new")
     public String renderNewLoanInquiryForm(Model model){
         model.addAttribute( new Loan());
-        model.addAttribute("transactionType", transactionCategoryRepository.findAll());
-        model.addAttribute("propertyType",  propertyCategoryRepository.findAll());
-        model.addAttribute("occupancyCategory", occupancyCategoryRepository.findAll());
+        model.addAttribute("transactionCategories", transactionCategoryRepository.findAll());
+        model.addAttribute("propertyCategories",  propertyCategoryRepository.findAll());
+        model.addAttribute("occupancyCategories", occupancyCategoryRepository.findAll());
         return "loans/new";
     }
 
