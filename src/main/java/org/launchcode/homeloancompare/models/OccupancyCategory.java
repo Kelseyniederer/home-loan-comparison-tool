@@ -1,5 +1,6 @@
 package org.launchcode.homeloancompare.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
@@ -12,7 +13,7 @@ public class OccupancyCategory extends AbstractEntity {
     @Size(min=3, message="Name must be at least 3 characters long")
     private String name;
 
-    @OneToMany(mappedBy = "occupancyCategory")
+    @OneToMany(mappedBy = "occupancyCategory", cascade = CascadeType.REMOVE)
     private final List<Loan> loans = new ArrayList<>();
 
     public OccupancyCategory(@Size(min = 3, message = "Name must be at least 3 characters long") String name) {

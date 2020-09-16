@@ -1,4 +1,7 @@
 package org.launchcode.homeloancompare.models;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.Entity;
@@ -35,14 +38,17 @@ public class Loan extends AbstractEntity{
 
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull(message = "Occupancy Type is Required")
     private OccupancyCategory occupancyCategory;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull(message = "Property Type is Required")
     private PropertyCategory propertyCategory;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull(message = "Transaction Type is Required")
     private TransactionCategory transactionCategory;
 
