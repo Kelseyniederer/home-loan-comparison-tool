@@ -16,8 +16,8 @@
     </div>
     <div class="form-group">
     <label>Email
-        <input th:field="${loan.borrowersEmail}" class="form-control"></label>
-        <p class="error" th:errors="${loan.borrowersEmail}"></p>
+        <input th:field="${loan.loanDetails.borrowersEmail}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.borrowersEmail}"></p>
 
     </div>
 
@@ -42,8 +42,8 @@
 
     <div class="form-group">
     <label>Estimated Credit Score
-        <input th:field="${loan.estimatedCreditScore}" class="form-control"></label>
-        <p class="error" th:errors="${loan.estimatedCreditScore}"></p>
+        <input th:field="${loan.loanDetails.estimatedCreditScore}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.estimatedCreditScore}"></p>
 
     </div>
 
@@ -73,19 +73,19 @@
 
     <div class="form-group">
     <label>Purchase Price $
-        <input th:field="${loan.purchasePrice}" class="form-control"></label>
-        <p class="error" th:errors="${loan.purchasePrice}"></p>
+        <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p>
 
 
     <div class="form-group">
     <label>Home Owners Insurance $
-        <input th:field="${loan.homeOwnersInsurance}" class="form-control"></label>
-        <p class="error" th:errors="${loan.homeOwnersInsurance}"></p>
+        <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
 
         <div class="form-group">
             <label>Closing Date
-                <input th:field="${loan.closingDate}" class="form-control"></label>
-            <p class="error" th:errors="${loan.closingDate}"></p>
+                <input th:field="${loan.loanDetails.closingDate}" class="form-control"></label>
+            <p class="error" th:errors="${loan.loanDetails.closingDate}"></p>
 
 
     <div class="form-group">
