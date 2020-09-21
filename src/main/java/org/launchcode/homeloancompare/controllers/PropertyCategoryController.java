@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("propertyCategories")
@@ -33,7 +34,7 @@ public class PropertyCategoryController {
 
     @PostMapping("create")
     public String processCreatePropertyCategoryForm(@Valid @ModelAttribute PropertyCategory propertyCategory,
-                                                    Errors errors, Model model) {
+                                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Property Type");
@@ -42,6 +43,7 @@ public class PropertyCategoryController {
         }
 
         propertyCategoryRepository.save(propertyCategory);
+        model.addAttribute("propertyCategories", propertyCategoryRepository.findAll());
         return "redirect:";
     }
 
@@ -60,6 +62,18 @@ public class PropertyCategoryController {
             }
         }
         return "redirect:";
+    }
+    @GetMapping("view/{propertyCategoryId}")
+    public String displayJobsByPropertyCategory(Model model, @PathVariable int propertyCategoryId) {
+
+        Optional optPropertyCategory = propertyCategoryRepository.findById(propertyCategoryId);
+        if (optPropertyCategory.isPresent()) {
+            PropertyCategory propertyCategory = (PropertyCategory) optPropertyCategory.get();
+            model.addAttribute("propertyCategory", propertyCategory);
+            return "propertyCategories/view";
+        } else {
+            return "view";
+        }
     }
 
 }

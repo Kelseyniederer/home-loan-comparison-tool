@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<nav th:replace="fragments :: navigation"></nav>
+<h1 th:text="${'Occupancy Type: ' + occupancyCategory.name}">Default Title</h1>
+
+
+<div class="loan-listing">
+    <p th:text="${'ID: ' + loan.id}"></p>
+    <p th:text="${'Name: ' + loan.borrowersName}"></p>
+    <p th:text="${'Name: ' + loan.subjectProperty}"></p>
+    <p>
+       Occupancy Type: <a th:href="@{'/occupancyCategories/view/' + ${occupancyCategory.id}}" th:text="${occupancyCategory.name}"></a>
+    </p>
+</div>
+
+
+</body>
+</html>

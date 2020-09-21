@@ -13,12 +13,9 @@ public class OccupancyCategory extends AbstractEntity {
     @Size(min=3, message="Name must be at least 3 characters long")
     private String name;
 
+
     @OneToMany(mappedBy = "occupancyCategory", cascade = CascadeType.REMOVE)
     private final List<Loan> loans = new ArrayList<>();
-
-    public OccupancyCategory(@Size(min = 3, message = "Name must be at least 3 characters long") String name) {
-        this.name = name;
-    }
 
     public OccupancyCategory() {}
 

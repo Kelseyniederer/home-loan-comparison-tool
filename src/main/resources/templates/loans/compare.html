@@ -7,8 +7,10 @@
 
 
 <table class="table table-striped">
-    <p th:text="${'ID: ' + loan.id}"></p>
-    <p th:text="${'Name: ' + loan.name}"></p>
+    <tr><td th:text="${'ID: ' + loan.id}"></td></tr>
+    <tr><td th:text="${'Borrower: ' + loan.borrowersName}"></td></tr>
+    <tr><td th:text="${'Subject Property: ' + loan.subjectProperty}"></td></tr>
+
 </table>
 
 

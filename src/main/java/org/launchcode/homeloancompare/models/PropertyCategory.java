@@ -16,10 +16,6 @@ public class PropertyCategory extends AbstractEntity {
     @OneToMany(mappedBy = "propertyCategory", cascade = CascadeType.REMOVE)
     private final List<Loan> loans = new ArrayList<>();
 
-    public PropertyCategory(@Size(min = 3, message = "Name must be at least 3 characters long") String name) {
-        this.name = name;
-    }
-
     public PropertyCategory() {}
 
     public String getName() {

@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("transactionCategories")
@@ -32,8 +33,8 @@ public class TransactionCategoryController {
     }
 
     @PostMapping("create")
-    public String processCreateOccupancyCategoryForm(@Valid @ModelAttribute TransactionCategory transactionCategory,
-                                                     Errors errors, Model model) {
+    public String processCreateTransactionCategoryForm(@Valid @ModelAttribute TransactionCategory transactionCategory,
+                                                    Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Transaction Type");
@@ -42,6 +43,7 @@ public class TransactionCategoryController {
         }
 
         transactionCategoryRepository.save(transactionCategory);
+        model.addAttribute("transactionCategories", transactionCategoryRepository.findAll());
         return "redirect:";
     }
 
@@ -60,6 +62,18 @@ public class TransactionCategoryController {
             }
         }
         return "redirect:";
+    }
+    @GetMapping("view/{propertyCategoryId}")
+    public String displayJobsByTransactionCategory(Model model, @PathVariable int transactionCategoryId) {
+
+        Optional optTransactionCategory = transactionCategoryRepository.findById(transactionCategoryId);
+        if (optTransactionCategory.isPresent()) {
+            TransactionCategory transactionCategory = (TransactionCategory) optTransactionCategory.get();
+            model.addAttribute("transactionCategory", transactionCategory);
+            return "transactionCategories/view";
+        } else {
+            return "view";
+        }
     }
 
 }

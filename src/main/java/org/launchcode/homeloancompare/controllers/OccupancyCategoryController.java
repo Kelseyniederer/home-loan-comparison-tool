@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("occupancyCategories")
@@ -42,6 +43,7 @@ public class OccupancyCategoryController {
         }
 
         occupancyCategoryRepository.save(occupancyCategory);
+        model.addAttribute("occupancyCategories", occupancyCategoryRepository.findAll());
         return "redirect:";
     }
 
@@ -60,6 +62,18 @@ public class OccupancyCategoryController {
             }
         }
         return "redirect:";
+    }
+    @GetMapping("view/{occupancyCategoryId}")
+    public String displayLoansByOccupancyCategory(Model model, @PathVariable int occupancyCategoryId) {
+
+        Optional optOccupancyCategory = occupancyCategoryRepository.findById(occupancyCategoryId);
+        if (optOccupancyCategory.isPresent()) {
+            OccupancyCategory occupancyCategory = (OccupancyCategory) optOccupancyCategory.get();
+            model.addAttribute("occupancyCategory", occupancyCategory);
+            return "occupancyCategories/view";
+        } else {
+            return "view";
+        }
     }
 
 }
