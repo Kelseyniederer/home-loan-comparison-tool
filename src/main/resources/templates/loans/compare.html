@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h2 th:text="title"></h2>
+<nav th:replace="fragments :: navigation"></nav>
+
+
+<table class="table table-striped">
+    <p th:text="${'ID: ' + loan.id}"></p>
+    <p th:text="${'Name: ' + loan.name}"></p>
+</table>
+
+
+</body>
+</html>

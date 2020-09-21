@@ -33,7 +33,7 @@ public class PropertyCategoryController {
 
     @PostMapping("create")
     public String processCreatePropertyCategoryForm(@Valid @ModelAttribute PropertyCategory propertyCategory,
-                                                     Errors errors, Model model) {
+                                                    Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Property Type");

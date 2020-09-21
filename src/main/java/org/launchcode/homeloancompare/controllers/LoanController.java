@@ -34,16 +34,16 @@ public class LoanController {
     @GetMapping
     public String displayAllLoanInquiries(@RequestParam(required = false) Integer occupancyCategoryId, Model model){
         if (occupancyCategoryId == null){
-        model.addAttribute("loanInquiries", loanRepository.findAll());
+            model.addAttribute("loanInquiries", loanRepository.findAll());
         }else {
-           Optional<OccupancyCategory> result = occupancyCategoryRepository.findById(occupancyCategoryId);
-           if(result.isEmpty()){
-               model.addAttribute("title", "Invalid Occupancy Type: " + occupancyCategoryId);
-           } else {
-               OccupancyCategory occupancyCategory = result.get();
-               model.addAttribute("title", "Loan Inquiries with Occupancy Type " + occupancyCategory.getName());
-               model.addAttribute("loans", occupancyCategory.getLoans());
-           }
+            Optional<OccupancyCategory> result = occupancyCategoryRepository.findById(occupancyCategoryId);
+            if(result.isEmpty()){
+                model.addAttribute("title", "Invalid Occupancy Type: " + occupancyCategoryId);
+            } else {
+                OccupancyCategory occupancyCategory = result.get();
+                model.addAttribute("title", "Loan Inquiries with Occupancy Type " + occupancyCategory.getName());
+                model.addAttribute("loans", occupancyCategory.getLoans());
+            }
         }
 
         return "loans/index";
@@ -62,6 +62,9 @@ public class LoanController {
     public String processNewLoanInquiryForm(@ModelAttribute @Valid Loan newLoanInquiry,
                                             Errors errors, Model model){
         if(errors.hasErrors()){
+            model.addAttribute("transactionCategories", transactionCategoryRepository.findAll());
+            model.addAttribute("propertyCategories",  propertyCategoryRepository.findAll());
+            model.addAttribute("occupancyCategories", occupancyCategoryRepository.findAll());
             return "loans/new";
         }
 
@@ -84,5 +87,14 @@ public class LoanController {
             }
         }
         return "redirect:";
+    }
+
+    @GetMapping("compare/{loanId}")
+    public String displayLoanCompare(Model model, @PathVariable int loanId) {
+        model.addAttribute("loan", loanRepository.findById(loanId).get());
+        model.addAttribute("occupancyCategory", loanRepository.findById(loanId).get().getOccupancyCategory());
+        model.addAttribute("propertyCategory", loanRepository.findById(loanId).get().getPropertyCategory());
+        model.addAttribute("transactionCategory", loanRepository.findById(loanId).get().getTransactionCategory());
+        return "loans/compare";
     }
 }

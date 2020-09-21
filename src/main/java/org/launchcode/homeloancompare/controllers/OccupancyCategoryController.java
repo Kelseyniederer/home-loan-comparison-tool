@@ -33,7 +33,7 @@ public class OccupancyCategoryController {
 
     @PostMapping("create")
     public String processCreateOccupancyCategoryForm(@Valid @ModelAttribute OccupancyCategory occupancyCategory,
-                                                 Errors errors, Model model) {
+                                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Occupancy Type");

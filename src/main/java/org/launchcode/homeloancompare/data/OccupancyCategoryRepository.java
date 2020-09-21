@@ -1,3 +1,4 @@
+
 package org.launchcode.homeloancompare.data;
 import org.launchcode.homeloancompare.models.OccupancyCategory;
 import org.springframework.data.repository.CrudRepository;
