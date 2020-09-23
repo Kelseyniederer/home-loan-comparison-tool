@@ -8,7 +8,6 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Entity
 public class LoanDetails extends AbstractEntity {
@@ -24,21 +23,27 @@ public class LoanDetails extends AbstractEntity {
     @NumberFormat
     private Integer estimatedCreditScore;
 
+    private String occupancyType;
+
+    private String transactionType;
+
+    private String propertyType;
+
     private Integer purchasePrice;
 
     private Integer homeOwnersInsurance;
 
-    private Date closingDate;
-
-    private Date firstPaymentDate;
-
-    public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail, @NotNull(message = "Please enter your estimated credit score") Integer estimatedCreditScore, Integer purchasePrice, Integer homeOwnersInsurance, Date closingDate, Date firstPaymentDate) {
+    public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
+                       Loan loan, @NotNull(message = "Please enter your estimated credit score") Integer estimatedCreditScore,
+                       String occupancyType, String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance) {
         this.borrowersEmail = borrowersEmail;
+        this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
+        this.occupancyType = occupancyType;
+        this.transactionType = transactionType;
+        this.propertyType = propertyType;
         this.purchasePrice = purchasePrice;
         this.homeOwnersInsurance = homeOwnersInsurance;
-        this.closingDate = closingDate;
-        this.firstPaymentDate = firstPaymentDate;
     }
 
     public LoanDetails() {
@@ -76,20 +81,27 @@ public class LoanDetails extends AbstractEntity {
         this.homeOwnersInsurance = homeOwnersInsurance;
     }
 
-
-    public Date getClosingDate() {
-        return closingDate;
+    public String getOccupancyType() {
+        return occupancyType;
     }
 
-    public void setClosingDate(Date closingDate) {
-        this.closingDate = closingDate;
+    public void setOccupancyType(String occupancyType) {
+        this.occupancyType = occupancyType;
     }
 
-    public Date getFirstPaymentDate() {
-        return firstPaymentDate;
+    public String getTransactionType() {
+        return transactionType;
     }
 
-    public void setFirstPaymentDate(Date firstPaymentDate) {
-        this.firstPaymentDate = firstPaymentDate;
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getPropertyType() {
+        return propertyType;
+    }
+
+    public void setPropertyType(String propertyType) {
+        this.propertyType = propertyType;
     }
 }

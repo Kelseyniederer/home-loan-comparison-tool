@@ -20,10 +20,10 @@
     </thead>
 
     <tr th:each="loan: ${loanInquiries}">
-        <td><a th:href="@{'loans/compare/' + ${loan.id}}" th:text="${loan.id}"></a></td>
+        <td><a th:href="@{'/loans/compare/' + ${loan.id}}" th:text="${loan.id}"></a></td>
         <td th:text="${loan.borrowersName}"></td>
         <td th:text="${loan.subjectProperty}"></td>
-        <td th:text="${loan.transactionCategory.name}"></td>
+        <td th:text="${loan.loanDetails.transactionType}"></td>
         <td th:text="${loan.loanDetails.borrowersEmail}"></td>
     </tr>
 </table>

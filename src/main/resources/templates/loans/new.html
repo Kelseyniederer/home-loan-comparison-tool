@@ -30,11 +30,10 @@
 
     <div class="form-group">
         <label>Transaction Type
-            <select th:field="${loan.transactionCategory}">
-                <option th:each="category : ${transactionCategories}"
-                        th:value="${category.id}"
-                        th:text="${category.name}"
-                ></option>
+            <select th:field="${loan.loanDetails.transactionType}">
+                <option value="Purchase">Purchase</option>
+                <option value="Refinance: Rate & Term">Refinance: Rate & Term</option>
+                <option value="Refinance: Cash Out">Refinance: Cash Out</option>
             </select>
         </label>
     </div>
@@ -49,11 +48,11 @@
 
     <div class="form-group">
         <label>Property Type
-            <select th:field="${loan.propertyCategory}">
-                <option th:each="category : ${propertyCategories}"
-                        th:value="${category.id}"
-                        th:text="${category.name}"
-                ></option>
+            <select th:field="${loan.loanDetails.propertyType}">
+                <option value="Single Family Residence">Single Family Residence</option>
+                <option value="Multiple Family Residence">Multiple Family Residence</option>
+                <option value="Condo">Condo</option>
+                <option value="Townhouse">Townhouse</option>
             </select>
         </label>
     </div>
@@ -61,11 +60,11 @@
 
     <div class="form-group">
         <label>Occupancy Type
-            <select th:field="${loan.occupancyCategory}">
-                <option th:each="category : ${occupancyCategories}"
-                        th:value="${category.id}"
-                        th:text="${category.name}"
-                ></option>
+            <select th:field="${loan.loanDetails.occupancyType}">
+                <option value="Owner Occupied">Owner Occupied</option>
+                <option value="Not Owner Occupied">Not Owner Occupied</option>
+                <option value="Second Home">Second Home</option>
+                <option value="Rental">Rental</option>
             </select>
         </label>
     </div>
@@ -74,18 +73,13 @@
     <div class="form-group">
     <label>Purchase Price $
         <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p>
+        <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p></div>
 
 
     <div class="form-group">
     <label>Home Owners Insurance $
         <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
-
-        <div class="form-group">
-            <label>Closing Date
-                <input th:field="${loan.loanDetails.closingDate}" class="form-control"></label>
-            <p class="error" th:errors="${loan.loanDetails.closingDate}"></p>
+        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p></div>
 
 
     <div class="form-group">

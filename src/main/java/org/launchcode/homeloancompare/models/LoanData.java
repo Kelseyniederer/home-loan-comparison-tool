@@ -44,14 +44,8 @@ public class LoanData {
         String theValue;
         if (fieldName.equals("borrowersName")){
             theValue = loan.getBorrowersName();
-        } else if (fieldName.equals("subjectProperty")){
-            theValue = loan.getSubjectProperty().toString();
-        } else if (fieldName.equals("occupancyCategory")){
-            theValue = loan.getOccupancyCategory().toString();
-        } else if (fieldName.equals("propertyCategory")){
-            theValue = loan.getPropertyCategory().toString();
         } else {
-            theValue = loan.getTransactionCategory().toString();
+            theValue = loan.getSubjectProperty().toString();
         }
 
         return theValue;
@@ -75,13 +69,7 @@ public class LoanData {
                 results.add(loan);
             } else if (loan.getSubjectProperty().toString().toLowerCase().contains(lower_val)) {
                 results.add(loan);
-            } else if (loan.getOccupancyCategory().toString().toLowerCase().contains(lower_val)) {
-                results.add(loan);
-            } else if (loan.getPropertyCategory().toString().toLowerCase().contains(lower_val)) {
-                results.add(loan);
-            } else if (loan.getTransactionCategory().toString().toLowerCase().contains(lower_val)) {
-                results.add(loan);
-            } else if (loan.toString().toLowerCase().contains(lower_val)) {
+            } else {
                 results.add(loan);
             }
 

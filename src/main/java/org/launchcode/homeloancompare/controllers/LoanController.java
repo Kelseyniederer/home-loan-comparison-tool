@@ -1,11 +1,7 @@
 package org.launchcode.homeloancompare.controllers;
 
 import org.launchcode.homeloancompare.data.LoanRepository;
-import org.launchcode.homeloancompare.data.OccupancyCategoryRepository;
-import org.launchcode.homeloancompare.data.PropertyCategoryRepository;
-import org.launchcode.homeloancompare.data.TransactionCategoryRepository;
 import org.launchcode.homeloancompare.models.Loan;
-import org.launchcode.homeloancompare.models.OccupancyCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,39 +18,16 @@ public class LoanController {
     @Autowired
     private LoanRepository loanRepository;
 
-    @Autowired
-    private OccupancyCategoryRepository occupancyCategoryRepository;
-
-    @Autowired
-    private PropertyCategoryRepository propertyCategoryRepository;
-
-    @Autowired
-    private TransactionCategoryRepository transactionCategoryRepository;
 
     @GetMapping
-    public String displayAllLoanInquiries(@RequestParam(required = false) Integer occupancyCategoryId, Model model){
-        if (occupancyCategoryId == null){
+    public String displayAllLoanInquiries(Model model){
             model.addAttribute("loanInquiries", loanRepository.findAll());
-        }else {
-            Optional<OccupancyCategory> result = occupancyCategoryRepository.findById(occupancyCategoryId);
-            if(result.isEmpty()){
-                model.addAttribute("title", "Invalid Occupancy Type: " + occupancyCategoryId);
-            } else {
-                OccupancyCategory occupancyCategory = result.get();
-                model.addAttribute("title", "Loan Inquiries with Occupancy Type " + occupancyCategory.getName());
-                model.addAttribute("loans", occupancyCategory.getLoans());
-            }
-        }
-
         return "loans/index";
     }
 
     @GetMapping("new")
     public String renderNewLoanInquiryForm(Model model){
         model.addAttribute( new Loan());
-        model.addAttribute("transactionCategories", transactionCategoryRepository.findAll());
-        model.addAttribute("propertyCategories",  propertyCategoryRepository.findAll());
-        model.addAttribute("occupancyCategories", occupancyCategoryRepository.findAll());
         return "loans/new";
     }
 
@@ -62,9 +35,6 @@ public class LoanController {
     public String processNewLoanInquiryForm(@ModelAttribute @Valid Loan newLoanInquiry,
                                             Errors errors, Model model){
         if(errors.hasErrors()){
-            model.addAttribute("transactionCategories", transactionCategoryRepository.findAll());
-            model.addAttribute("propertyCategories",  propertyCategoryRepository.findAll());
-            model.addAttribute("occupancyCategories", occupancyCategoryRepository.findAll());
             return "loans/new";
         }
 
@@ -90,11 +60,15 @@ public class LoanController {
     }
 
     @GetMapping("compare/{loanId}")
-    public String displayLoanCompare(Model model, @PathVariable int loanId) {
-        model.addAttribute("loan", loanRepository.findById(loanId).get());
-        model.addAttribute("occupancyCategory", loanRepository.findById(loanId).get().getOccupancyCategory());
-        model.addAttribute("propertyCategory", loanRepository.findById(loanId).get().getPropertyCategory());
-        model.addAttribute("transactionCategory", loanRepository.findById(loanId).get().getTransactionCategory());
-        return "loans/compare";
+    public String displayViewLoan(Model model, @PathVariable int loanId) {
+
+        Optional<Loan> optLoan = loanRepository.findById(loanId);
+        if (optLoan.isPresent()) {
+            Loan loan = (Loan) optLoan.get();
+            model.addAttribute("loan", loan);
+            return "loans/compare";
+        } else {
+            return "loans/index";
+        }
     }
 }
