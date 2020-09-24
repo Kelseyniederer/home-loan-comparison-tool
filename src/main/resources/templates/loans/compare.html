@@ -17,6 +17,31 @@
     <td th:text="${loan.loanDetails.transactionType}"></td></tr>
 </table>
 
+<table class="table table-striped w-auto">
+    <tr>
+        <th>Assuming a Credit Score of</th>
+        <td th:text="${loan.loanDetails.estimatedCreditScore}"></td>
+    </tr>
+    <tr>
+        <th>Property Type</th>
+        <td th:text="${loan.loanDetails.propertyType}"></td>
+    </tr>
+    <tr>
+        <th>Occupancy Type</th>
+        <td th:text="${loan.loanDetails.occupancyType}"></td>
+    </tr>
+    <tr>
+        <th>Purchase Price</th>
+        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
+    </tr>
+    <tr>
+        <th>Home Owners Insurance (e)</th>
+        <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
+    </tr>
+
+
+
+</table>
 
 </body>
 </html>
