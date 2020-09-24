@@ -2,15 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h2 th:text="title"></h2>
+<h3 th:text="${'Loan Details for ' + loan.subjectProperty}"></h3>
 <nav th:replace="fragments :: navigation"></nav>
 
 
 <table class="table table-striped">
-    <tr><td th:text="${'ID: ' + loan.id}"></td></tr>
-    <tr><td th:text="${'Borrower: ' + loan.borrowersName}"></td></tr>
-    <tr><td th:text="${'Subject Property: ' + loan.subjectProperty}"></td></tr>
-
+    <th>ID</th>
+    <th>Borrower</th>
+    <th>Subject Property</th>
+    <th>Transaction Type</th>
+    <tr><td th:text="${loan.id}"></td>
+    <td th:text="${loan.borrowersName}"></td>
+    <td th:text="${loan.subjectProperty}"></td>
+    <td th:text="${loan.loanDetails.transactionType}"></td></tr>
 </table>
 
 
