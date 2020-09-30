@@ -39,8 +39,9 @@
         <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
     </tr>
 
-
-
+        <th>Closing Date</th>
+        <td th:text="${loan.loanDetails.closingDate}" class="customDate" onload="hello()"></td>
+    </tr>
 </table>
 
 </body>

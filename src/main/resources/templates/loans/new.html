@@ -81,6 +81,13 @@
         <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p></div>
 
+    <div>
+        <label>Closing Date
+            <input type="date" th:field="${loan.loanDetails.closingDate}" class="form-control"/>
+        </label>
+        <p class="error" th:errors="${loan.loanDetails.closingDate}"></p>
+    </div>
+
 
     <div class="form-group">
         <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
