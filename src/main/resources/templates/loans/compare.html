@@ -37,18 +37,23 @@
         <th>Occupancy Type</th>
         <td th:text="${loan.loanDetails.occupancyType}"></td>
     </tr>
+</table>
+    <table class="table table-striped table-sm">
     <tr>
         <th>Purchase Price</th>
         <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
-    </tr>
-    <tr>
         <th>Home Owners Insurance (e)</th>
         <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
+        <th>Real Estate Taxes (e)</th>
+        <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
     </tr>
-
+<tr>
     <th>Closing Date</th>
-    <td th:text="${loan.loanDetails.closingDate}" id="customDate"></td>
+    <td style="text-align: center;" th:text="${loan.loanDetails.closingDate}" id="customDate"></td>
+    <th style="text-align: right;">First Payment Due</th>
+    <td style="text-align: center;" th:text="${loan.loanDetails.closingDate}" id="customDate"></td>
     </tr>
+</table>
 
 
 </table>
