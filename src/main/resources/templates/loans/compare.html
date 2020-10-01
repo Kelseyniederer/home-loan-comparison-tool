@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head">
+
+
+</head>
 <body class="container">
 <h3 th:text="${'Loan Details for ' + loan.subjectProperty}"></h3>
 <nav th:replace="fragments :: navigation"></nav>
 
 
-<table class="table table-striped">
-    <th>ID</th>
-    <th>Borrower</th>
-    <th>Subject Property</th>
-    <th>Transaction Type</th>
-    <tr><td th:text="${loan.id}"></td>
-    <td th:text="${loan.borrowersName}"></td>
-    <td th:text="${loan.subjectProperty}"></td>
-    <td th:text="${loan.loanDetails.transactionType}"></td></tr>
-</table>
-
-<table class="table table-striped w-auto">
+<table class="table table-striped table-sm w-auto">
+    <tr class="table-info"  style="text-align: center;">
+        <th colspan="2">Loan Details</th>
+    </tr>
+    <tr>
+        <th>Borrower</th>
+        <td th:text="${loan.borrowersName}"></td>
+    </tr>
+    <tr>
+        <th>Subject Property</th>
+        <td th:text="${loan.subjectProperty}"></td>
+    </tr>
+    <tr>
+        <th>Transaction Type</th>
+        <td th:text="${loan.loanDetails.transactionType}"></td>
+    </tr>
     <tr>
         <th>Assuming a Credit Score of</th>
         <td th:text="${loan.loanDetails.estimatedCreditScore}"></td>
@@ -39,10 +46,68 @@
         <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
     </tr>
 
-        <th>Closing Date</th>
-        <td th:text="${loan.loanDetails.closingDate}" class="customDate" onload="hello()"></td>
+    <th>Closing Date</th>
+    <td th:text="${loan.loanDetails.closingDate}" id="customDate"></td>
+    </tr>
+
+
+</table>
+<table class="table table-striped">
+    <tr style="text-align: center;" class="table-info text-center">
+        <th colspan="4">Mortgage Information</th>
+    </tr>
+
+    <tr>
+        <th></th>
+        <th>30 Year</th>
+        <th>20 Year</th>
+        <th>15 Year</th>
+    </tr>
+    <tr>
+        <th>Purchase Price</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>Down Payment</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>Loan Amount</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>Interest Rate</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>Term (years)</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>APR</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+    </tr>
+    <tr>
+        <th>CAPS for ARMS</th>
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
     </tr>
 </table>
+
+
 
 </body>
 </html>

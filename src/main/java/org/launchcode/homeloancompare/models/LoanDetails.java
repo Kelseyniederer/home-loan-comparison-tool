@@ -35,10 +35,12 @@ public class LoanDetails extends AbstractEntity {
 
     private String closingDate;
 
+    private String firstPaymentDate;
+
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
                        Loan loan, @NotNull(message = "Please enter your estimated credit score") Integer estimatedCreditScore,
                        String occupancyType, String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
-                        , String closingDate) {
+                        ,String closingDate, String firstPaymentDate) {
         this.borrowersEmail = borrowersEmail;
         this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
@@ -48,6 +50,7 @@ public class LoanDetails extends AbstractEntity {
         this.purchasePrice = purchasePrice;
         this.homeOwnersInsurance = homeOwnersInsurance;
         this.closingDate = closingDate;
+        this.firstPaymentDate = firstPaymentDate;
     }
 
     public LoanDetails() {
@@ -98,7 +101,20 @@ public class LoanDetails extends AbstractEntity {
     }
 
     public void setClosingDate(String closingDate) {
-        this.closingDate = closingDate;
+        String[] customDateArr = closingDate.split("-");
+        String customDate = "";
+        for (int i = 0; i < customDateArr.length; i++){
+            customDate.concat(customDateArr[i]).concat("/");
+        }
+        this.closingDate = customDate;
+    }
+
+    public String getFirstPaymentDate() {
+        return firstPaymentDate;
+    }
+
+    public void setFirstPaymentDate(String firstPaymentDate) {
+        this.firstPaymentDate = closingDate;
     }
 
     public String getTransactionType() {
