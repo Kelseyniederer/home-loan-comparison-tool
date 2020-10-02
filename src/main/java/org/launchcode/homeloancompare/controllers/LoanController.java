@@ -70,5 +70,7 @@ public class LoanController {
         } else {
             return "loans/index";
         }
+
+
     }
 }

@@ -101,12 +101,7 @@ public class LoanDetails extends AbstractEntity {
     }
 
     public void setClosingDate(String closingDate) {
-        String[] customDateArr = closingDate.split("-");
-        String customDate = "";
-        for (int i = 0; i < customDateArr.length; i++){
-            customDate.concat(customDateArr[i]).concat("/");
-        }
-        this.closingDate = customDate;
+        this.closingDate = closingDate;
     }
 
     public String getFirstPaymentDate() {
