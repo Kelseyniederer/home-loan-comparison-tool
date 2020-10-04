@@ -66,6 +66,59 @@ public class LoanController {
         if (optLoan.isPresent()) {
             Loan loan = (Loan) optLoan.get();
             model.addAttribute("loan", loan);
+
+            String[] closingDateArr = loan.getLoanDetails().getClosingDate().split("-");
+            String closingMonth = closingDateArr[1];
+            String closingDay = closingDateArr[2];
+            Integer closingYear = Integer.parseInt(closingDateArr[0]);
+            String firstPaymentDay = "01";
+            String firstPaymentMonth = "";
+            Integer firstPaymentYear = closingYear;
+
+            if (closingMonth.equals("01")){
+                firstPaymentMonth = "03";
+            }  else if (closingMonth.equals("02")){
+                firstPaymentMonth = "04";
+            }  else if (closingMonth.equals("03")){
+                firstPaymentMonth = "05";
+            }  else if (closingMonth.equals("04")){
+                firstPaymentMonth = "06";
+            }  else if (closingMonth.equals("05")){
+                firstPaymentMonth = "07";
+            }  else if (closingMonth.equals("06")){
+                firstPaymentMonth = "08";
+            }  else if (closingMonth.equals("07")){
+                firstPaymentMonth = "09";
+            }  else if (closingMonth.equals("08")){
+                firstPaymentMonth = "10";
+            }  else if (closingMonth.equals("09")){
+                firstPaymentMonth = "11";
+            }  else if (closingMonth.equals("10")){
+                firstPaymentMonth = "12";
+            }  else if (closingMonth.equals("11")){
+                firstPaymentMonth = "01";
+                firstPaymentYear += 1;
+            } else if ( closingMonth.equals("12")) {
+                firstPaymentMonth = "02";
+                firstPaymentYear += 1;
+            }
+
+            String customClosingDate = closingMonth + "/" + closingDay + "/" + closingYear.toString();
+            String customFirstPaymentDate = firstPaymentMonth + "/" + firstPaymentDay + "/" + firstPaymentYear.toString();
+
+            model.addAttribute("closingDate", customClosingDate);
+            model.addAttribute("firstPaymentDate", customFirstPaymentDate);
+
+
+
+
+
+
+
+
+
+
+
             return "loans/compare";
         } else {
             return "loans/index";
