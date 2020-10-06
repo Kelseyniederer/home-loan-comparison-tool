@@ -72,13 +72,19 @@ public class LoanController {
             String closingDay = closingDateArr[2];
             Integer closingYear = Integer.parseInt(closingDateArr[0]);
             String firstPaymentDay = "01";
-            Integer firstPaymentMonth = closingMonth + 2;
+            Integer firstPaymentMonth;
             Integer firstPaymentYear;
 
-            if (closingMonth.equals(11) || closingMonth.equals(12)){
+            if (closingMonth.equals(11)){
+                firstPaymentMonth = 1;
+                firstPaymentYear = closingYear + 1;
+            }
+            else if (closingMonth.equals(12)){
+                firstPaymentMonth = 2;
                 firstPaymentYear = closingYear + 1;
             }
             else {
+                firstPaymentMonth = closingMonth + 2;
                 firstPaymentYear = closingYear;
             }
 
