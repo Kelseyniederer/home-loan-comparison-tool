@@ -1,3 +1,6 @@
-function hello(){
-    console.log("Hello");
-};
+   function showInput() {
+        let zipCode = document.getElementById("zip").innerHTML;
+        console.log(zipCode);
+
+    };
+

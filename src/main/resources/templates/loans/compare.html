@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head">
 
 </head>
-<button type="button" onclick="hello()">Click Me!</button>
+<p id="demo"></p>
 <body class="container">
 <h3>Compare Loan Options</h3>
 <nav th:replace="fragments :: navigation"></nav>
@@ -25,6 +25,11 @@
         <td></td>
     </tr>
     <tr>
+        <th>ZIP Code</th>
+        <td th:text="${loan.loanDetails.zipCode}" value="${loan.loanDetails.zipCode}" id="zip"></td>
+        <td></td>
+    </tr>
+    <tr>
         <th>Transaction Type</th>
         <td th:text="${loan.loanDetails.transactionType}"></td>
     </tr>
@@ -41,6 +46,8 @@
         <td th:text="${loan.loanDetails.occupancyType}"></td>
     </tr>
 </table>
+<button type="button" onclick="showInput()">Click Me!</button>
+
     <table class="table table-striped table-sm">
     <tr>
         <th>Purchase Price</th>
