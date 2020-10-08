@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 
-
 </head>
+<button type="button" onclick="hello()">Click Me!</button>
 <body class="container">
 <h3>Compare Loan Options</h3>
 <nav th:replace="fragments :: navigation"></nav>
@@ -22,6 +22,7 @@
     <tr>
         <th>Subject Property</th>
         <td th:text="${loan.subjectProperty}"></td>
+        <td></td>
     </tr>
     <tr>
         <th>Transaction Type</th>
