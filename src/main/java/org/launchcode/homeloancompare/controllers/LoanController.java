@@ -69,9 +69,9 @@ public class LoanController {
 
             String[] closingDateArr = loan.getLoanDetails().getClosingDate().split("-");
             Integer closingMonth = Integer.parseInt(closingDateArr[1]);
-            String closingDay = closingDateArr[2];
+            Integer closingDay = Integer.parseInt(closingDateArr[2]);
             Integer closingYear = Integer.parseInt(closingDateArr[0]);
-            String firstPaymentDay = "01";
+            String firstPaymentDay = "1";
             Integer firstPaymentMonth;
             Integer firstPaymentYear;
 
@@ -88,7 +88,7 @@ public class LoanController {
                 firstPaymentYear = closingYear;
             }
 
-            String customClosingDate = closingMonth.toString() + "/" + closingDay + "/" + closingYear.toString();
+            String customClosingDate = closingMonth.toString() + "/" + closingDay.toString() + "/" + closingYear.toString();
             String customFirstPaymentDate = firstPaymentMonth.toString() + "/" + firstPaymentDay + "/" + firstPaymentYear.toString();
 
             model.addAttribute("closingDate", customClosingDate);

@@ -21,7 +21,7 @@ public class LoanDetails extends AbstractEntity {
 
     @NotNull(message = "Please enter your estimated credit score")
     @NumberFormat
-    private Integer estimatedCreditScore;
+    private String estimatedCreditScore;
 
     private String occupancyType;
 
@@ -38,7 +38,7 @@ public class LoanDetails extends AbstractEntity {
     private String firstPaymentDate;
 
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
-                       Loan loan, @NotNull(message = "Please enter your estimated credit score") Integer estimatedCreditScore,
+                       Loan loan, @NotNull(message = "Please enter your estimated credit score") String estimatedCreditScore,
                        String occupancyType, String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
                         ,String closingDate, String firstPaymentDate) {
         this.borrowersEmail = borrowersEmail;
@@ -64,11 +64,11 @@ public class LoanDetails extends AbstractEntity {
         this.borrowersEmail = borrowersEmail;
     }
 
-    public Integer getEstimatedCreditScore() {
+    public String getEstimatedCreditScore() {
         return estimatedCreditScore;
     }
 
-    public void setEstimatedCreditScore(Integer estimatedCreditScore) {
+    public void setEstimatedCreditScore(String estimatedCreditScore) {
         this.estimatedCreditScore = estimatedCreditScore;
     }
 

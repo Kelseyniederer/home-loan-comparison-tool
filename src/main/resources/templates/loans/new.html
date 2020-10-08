@@ -25,9 +25,16 @@
         <label>Subject Property Address
             <input th:field="${loan.subjectProperty}" class="form-control"></label>
         <p class="error" th:errors="${loan.subjectProperty}"></p>
-
     </div>
-
+    <div class="form-group">
+        <label>Purchase Price
+            <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p>
+    </div>
+    <div class="form-group">
+        <label>ZIP Code
+        <input id="zip" name="zip" type="text" pattern="[0-9]{5}"></label>
+    </div>
     <div class="form-group">
         <label>Transaction Type
             <select th:field="${loan.loanDetails.transactionType}">
@@ -40,10 +47,18 @@
 
 
     <div class="form-group">
-    <label>Estimated Credit Score
-        <input th:field="${loan.loanDetails.estimatedCreditScore}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.estimatedCreditScore}"></p>
-
+        <label>Estimated Credit Score
+            <select th:field="${loan.loanDetails.estimatedCreditScore}">
+                <option value="780-850">780-850</option>
+                <option value="740-779">740-779</option>
+                <option value="720-739">720-739</option>
+                <option value="680-719">680-719</option>
+                <option value="620-719">620-719</option>
+                <option value="580-619">580-619</option>
+                <option value="520-579">520-579</option>
+                <option value="<520"><520</option>
+            </select>
+        </label>
     </div>
 
     <div class="form-group">
@@ -64,22 +79,10 @@
                 <option value="Owner Occupied">Owner Occupied</option>
                 <option value="Not Owner Occupied">Not Owner Occupied</option>
                 <option value="Second Home">Second Home</option>
-                <option value="Rental">Rental</option>
+                <option value="Rental">Rental/Investment</option>
             </select>
         </label>
     </div>
-
-
-    <div class="form-group">
-    <label>Purchase Price $
-        <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p></div>
-
-
-    <div class="form-group">
-    <label>Home Owners Insurance $
-        <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p></div>
 
     <div>
         <label>Closing Date
