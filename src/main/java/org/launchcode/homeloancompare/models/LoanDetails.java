@@ -1,8 +1,6 @@
 package org.launchcode.homeloancompare.models;
 
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
@@ -19,8 +17,6 @@ public class LoanDetails extends AbstractEntity {
     @OneToOne(mappedBy = "loanDetails")
     private Loan loan;
 
-    @NotNull(message = "Please enter your estimated credit score")
-    @NumberFormat
     private String estimatedCreditScore;
 
     private String occupancyType;

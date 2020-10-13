@@ -78,31 +78,18 @@ public class LoanController {
             if (closingMonth.equals(11)){
                 firstPaymentMonth = 1;
                 firstPaymentYear = closingYear + 1;
-            }
-            else if (closingMonth.equals(12)){
+            } else if (closingMonth.equals(12)){
                 firstPaymentMonth = 2;
                 firstPaymentYear = closingYear + 1;
-            }
-            else {
+            } else {
                 firstPaymentMonth = closingMonth + 2;
                 firstPaymentYear = closingYear;
             }
-
             String customClosingDate = closingMonth.toString() + "/" + closingDay.toString() + "/" + closingYear.toString();
             String customFirstPaymentDate = firstPaymentMonth.toString() + "/" + firstPaymentDay + "/" + firstPaymentYear.toString();
 
             model.addAttribute("closingDate", customClosingDate);
             model.addAttribute("firstPaymentDate", customFirstPaymentDate);
-
-
-
-
-
-
-
-
-
-
 
             return "loans/compare";
         } else {
