@@ -18,19 +18,21 @@ public class LoanController {
     @Autowired
     private LoanRepository loanRepository;
 
-
+// Displays all loan inquiries
     @GetMapping
     public String displayAllLoanInquiries(Model model){
             model.addAttribute("loanInquiries", loanRepository.findAll());
         return "loans/index";
     }
 
+    // Renders New Loan Form
     @GetMapping("new")
     public String renderNewLoanInquiryForm(Model model){
         model.addAttribute( new Loan());
         return "loans/new";
     }
 
+    // Processes New Loan Form
     @PostMapping("new")
     public String processNewLoanInquiryForm(@ModelAttribute @Valid Loan newLoanInquiry,
                                             Errors errors, Model model){
@@ -42,6 +44,7 @@ public class LoanController {
         return "redirect:";
     }
 
+    // Delete Loan Inquiries
     @GetMapping("delete")
     public String displayDeleteLoanInquiryForm(Model model){
         model.addAttribute("title", "Delete Loan Inquiries");
@@ -59,6 +62,7 @@ public class LoanController {
         return "redirect:";
     }
 
+    // Loan comparison table
     @GetMapping("compare/{loanId}")
     public String displayViewLoan(Model model, @PathVariable int loanId) {
 
@@ -67,6 +71,7 @@ public class LoanController {
             Loan loan = (Loan) optLoan.get();
             model.addAttribute("loan", loan);
 
+            // Finds first payment date
             String[] closingDateArr = loan.getLoanDetails().getClosingDate().split("-");
             Integer closingMonth = Integer.parseInt(closingDateArr[1]);
             Integer closingDay = Integer.parseInt(closingDateArr[2]);
