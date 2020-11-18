@@ -35,10 +35,12 @@ public class LoanDetails extends AbstractEntity {
 
     private String firstPaymentDate;
 
+    private Integer lenderFees;
+
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
                        Loan loan, @NotNull(message = "Please enter your estimated credit score") String estimatedCreditScore,
                        String occupancyType, String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
-                        ,String closingDate, String firstPaymentDate, String zipCode) {
+                        ,String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees) {
         this.borrowersEmail = borrowersEmail;
         this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
@@ -50,6 +52,7 @@ public class LoanDetails extends AbstractEntity {
         this.closingDate = closingDate;
         this.firstPaymentDate = firstPaymentDate;
         this.zipCode = zipCode;
+        this.lenderFees = lenderFees;
     }
 
     public LoanDetails() {
@@ -133,5 +136,13 @@ public class LoanDetails extends AbstractEntity {
 
     public void setPropertyType(String propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public Integer getLenderFees() {
+        return lenderFees;
+    }
+
+    public void setLenderFees(Integer lenderFees) {
+        this.lenderFees = lenderFees;
     }
 }

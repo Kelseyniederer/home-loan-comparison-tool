@@ -91,6 +91,12 @@
         <p class="error" th:errors="${loan.loanDetails.closingDate}"></p>
     </div>
 
+    <div class="form-group">
+        <label>Lender Fees
+            <input th:field="${loan.loanDetails.lenderFees}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.lenderFees}"></p>
+    </div>
+
 
     <div class="form-group">
         <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
