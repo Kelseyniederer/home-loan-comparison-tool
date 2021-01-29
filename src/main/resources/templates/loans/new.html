@@ -97,6 +97,16 @@
         <p class="error" th:errors="${loan.loanDetails.lenderFees}"></p>
     </div>
 
+    <div class="form-group">
+        <label>Home Owners Insurance
+            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
+    </div>
+    <div class="form-group">
+        <label>Real Estate Taxes
+            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
+    </div>
 
     <div class="form-group">
         <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
