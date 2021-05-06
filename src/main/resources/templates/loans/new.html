@@ -22,12 +22,12 @@
     </div>
 
     <div class="form-group">
-        <label>Subject Property Address
+        <label>Property Address
             <input th:field="${loan.subjectProperty}" class="form-control"></label>
         <p class="error" th:errors="${loan.subjectProperty}"></p>
     </div>
     <div class="form-group">
-        <label>Purchase Price
+        <label>Home Price
             <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p>
     </div>
@@ -35,16 +35,6 @@
         <label>ZIP Code
         <input th:field="${loan.loanDetails.zipCode}" id="zip"  type="text" pattern="[0-9]{5}"></label>
     </div>
-    <div class="form-group">
-        <label>Transaction Type
-            <select th:field="${loan.loanDetails.transactionType}">
-                <option value="Purchase">Purchase</option>
-                <option value="Refinance: Rate & Term">Refinance: Rate & Term</option>
-                <option value="Refinance: Cash Out">Refinance: Cash Out</option>
-            </select>
-        </label>
-    </div>
-
 
     <div class="form-group">
         <label>Estimated Credit Score
@@ -72,14 +62,12 @@
         </label>
     </div>
 
-
     <div class="form-group">
-        <label>Occupancy Type
+        <label>Length of Loan
             <select th:field="${loan.loanDetails.occupancyType}">
-                <option value="Owner Occupied">Owner Occupied</option>
-                <option value="Not Owner Occupied">Not Owner Occupied</option>
-                <option value="Second Home">Second Home</option>
-                <option value="Rental">Rental/Investment</option>
+                <option value="30 Years">30 Years</option>
+                <option value="15 Years">15 Years</option>
+                <option value="10 Years">10 Years</option>
             </select>
         </label>
     </div>
@@ -98,15 +86,21 @@
     </div>
 
     <div class="form-group">
+        <label>Property Tax
+            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
+    </div>
+
+    <div class="form-group">
         <label>Home Owners Insurance
             <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
     </div>
-    <div class="form-group">
-        <label>Real Estate Taxes
-            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
-    </div>
+<!--    <div class="form-group">-->
+<!--        <label>HOA Fees-->
+<!--            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>-->
+<!--        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>-->
+<!--    </div>-->
 
     <div class="form-group">
         <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
