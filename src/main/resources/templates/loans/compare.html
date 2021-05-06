@@ -30,20 +30,12 @@
         <td></td>
     </tr>
     <tr>
-        <th>Transaction Type</th>
-        <td th:text="${loan.loanDetails.transactionType}"></td>
-    </tr>
-    <tr>
         <th>Assuming a Credit Score of</th>
         <td th:text="${loan.loanDetails.estimatedCreditScore}"></td>
     </tr>
     <tr>
         <th>Property Type</th>
         <td th:text="${loan.loanDetails.propertyType}"></td>
-    </tr>
-    <tr>
-        <th>Occupancy Type</th>
-        <td th:text="${loan.loanDetails.occupancyType}"></td>
     </tr>
 </table>
 
@@ -65,71 +57,54 @@
     <th style="text-align: right;">First Payment Due</th>
     <td style="text-align: center;" th:text="${firstPaymentDate}" ></td>
     </tr>
+
+        <tr>
+            <th>Purchase Price</th>
+            <td style="text-align: center;" th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
+
+
+            <th style="text-align: right;">Down Payment</th>
+            <td style="text-align: center;">---</td>
+        </tr>
+       <tr>
+            <th>Loan Amount</th>
+            <td style="text-align: center;">---</td>
+
+
+            <th style="text-align: right;">Interest Rate</th>
+            <td style="text-align: center;">---</td>
+        </tr>
 </table>
 
 </table>
-<table class="table table-striped">
-    <tr style="text-align: center;" class="table-info text-center">
-        <th colspan="5">Mortgage Information</th>
-    </tr>
+<!--<table class="table table-striped">-->
+<!--    <tr style="text-align: center;" class="table-info text-center">-->
+<!--        <th colspan="5">Mortgage Information</th>-->
+<!--    </tr>-->
 
-    <tr>
-        <th>Loan Term</th>
-        <th>30 Year</th>
-        <th>20 Year</th>
-        <th>15 Year</th>
-        <th>Adjustable Rate</th>
-    </tr>
-    <tr>
-        <th>Purchase Price</th>
-        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
-        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
-        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
-        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
-    </tr>
-    <tr>
-        <th>Down Payment</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Loan Amount</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Interest Rate</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Term (years)</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>APR</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>CAPS for ARMS</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-</table>
+<!--    <tr>-->
+<!--        <th>Loan Term</th>-->
+<!--        <th>30 Year</th>-->
+<!--        <th>20 Year</th>-->
+<!--        <th>15 Year</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Purchase Price</th>-->
+<!--        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Down Payment</th>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Loan Amount</th>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Interest Rate</th>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--    </tr>-->
+<!--</table>-->
 <table class="table table-striped">
     <tr style="text-align: center;" class="table-info text-center">
         <th colspan="5">Estimate Monthly Payment</th>
@@ -140,18 +115,9 @@
         <th>30 Year</th>
         <th>20 Year</th>
         <th>15 Year</th>
-        <th>Adjustable Rate</th>
     </tr>
     <tr>
         <th>Principal and Interest</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Condo Fee</th>
-        <td>---</td>
         <td>---</td>
         <td>---</td>
         <td>---</td>
@@ -161,18 +127,21 @@
         <td>---</td>
         <td>---</td>
         <td>---</td>
+    </tr>
+    <tr>
+        <th>Home Owners Insurance</th>
+        <td>---</td>
+        <td>---</td>
         <td>---</td>
     </tr>
     <tr>
-        <th>M.I. Factor</th>
-        <td>---</td>
+        <th>HOA Fees</th>
         <td>---</td>
         <td>---</td>
         <td>---</td>
     </tr>
     <tr>
-        <th>P.M.I.</th>
-        <td>---</td>
+        <th>Condo Fees</th>
         <td>---</td>
         <td>---</td>
         <td>---</td>
@@ -182,199 +151,106 @@
         <td>---</td>
         <td>---</td>
         <td>---</td>
-        <td>---</td>
     </tfoot>
 </table>
 
-<table class="table table-striped">
-    <tr style="text-align: center;" class="table-info text-center">
-        <th colspan="5" >Estimated Funds Needed to Close</th>
-    </tr>
+<!--<table class="table table-striped">-->
+<!--    <tr style="text-align: center;" class="table-info text-center">-->
+<!--        <th colspan="5" >Estimated Funds Needed to Close</th>-->
+<!--    </tr>-->
 
-    <tr>
-        <th>Loan Term</th>
-        <th>30 Year</th>
-        <th>20 Year</th>
-        <th>15 Year</th>
-        <th>Adjustable Rate</th>
-    </tr>
-    <tr>
-        <th>Down Payment</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Lender Fees</th>
-        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>
-        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>
-        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>
-        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>
-    </tr>
-    <tr>
-        <th>Fixed Rate Discount</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Title Insurance Fees <br> </th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Condo Questionnaire</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Prepaid Interest</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Escrow Reserves</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Earnest Money</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Seller-Paid Closing Costs</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Final Inspection Fee</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr class="bg-info" style="color: white;">
-    <th>Total Funds to Close</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr style="text-align: center;" class="table-warning text-center">
-        <td colspan="5" style="font-style: italic;">This loan comparison is for informational purposes only. If you choose to apply for a loan, you will receive a Loan Estimate along with other disclosures. Rates are Fees are subject to change. This does not constitute a commitment to lend. The disclosed closing costs are estimates. Actual closing costs may vary.</td>
-    </tr>
-</table>
+<!--    <tr>-->
+<!--        <th>Loan Term</th>-->
+<!--        <th>30 Year</th>-->
+<!--        <th>20 Year</th>-->
+<!--        <th>15 Year</th>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Down Payment</th>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--        <td>-&#45;&#45;</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <th>Lender Fees</th>-->
+<!--        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>-->
+<!--        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>-->
+<!--        <td th:text="'$' + ${loan.loanDetails.lenderFees}"></td>-->
+<!--    </tr>-->
+<!--    <tr class="bg-info" style="color: white;">-->
 
-<table class="table table-striped">
-    <tr style="text-align: center;" class="table-info text-center">
-        <th colspan="5" >Loan Summary After 5 Years</th>
-    </tr>
+<!--    <tr style="text-align: center;" class="table-warning text-center">-->
+<!--        <td colspan="5" style="font-style: italic;">This loan comparison is for informational purposes only. If you choose to apply for a loan, you will receive a Loan Estimate along with other disclosures. Rates are Fees are subject to change. This does not constitute a commitment to lend. The disclosed closing costs are estimates. Actual closing costs may vary.</td>-->
+<!--    </tr>-->
+<!--</table>-->
 
-    <tr>
-        <th>Loan Term</th>
-        <th>30 Year</th>
-        <th>20 Year</th>
-        <th>15 Year</th>
-        <th>Adjustable Rate</th>
-    </tr>
-    <tr>
-        <th>Loan Balance</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Interest</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr>
-        <th>Private Mortgage Insurance</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-    <tr class="bg-info" style="color: white;">
-        <th>Total Interest and P.M.I. After 5 Years</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
-    </tr>
-</table>
+<!--<table class="table table-striped">-->
+<!--    <tr style="text-align: center;" class="table-info text-center">-->
+<!--        <th colspan="5" >Loan Summary After 5 Years</th>-->
+<!--    </tr>-->
+
+<!--    <tr>-->
+<!--        <th>Loan Term</th>-->
+<!--        <th>30 Year</th>-->
+<!--        <th>20 Year</th>-->
+<!--        <th>15 Year</th>-->
+<!--    </tr>-->
+
+<!--</table>-->
     <table class="table table-striped">
-        <tr style="text-align: center;" class="table-info text-center">
-            <th colspan="5" >Lifetime of Loan Summary</th>
-        </tr>
+<!--        <tr style="text-align: center;" class="table-info text-center">-->
+<!--            <th colspan="5" >Lifetime of Loan Summary</th>-->
+<!--        </tr>-->
 
-        <tr>
-            <th>Loan Term</th>
-            <th>30 Year</th>
-            <th>20 Year</th>
-            <th>15 Year</th>
-            <th>Adjustable Rate</th>
-        </tr>
-        <tr>
-            <th>Monthly Principal & Interest</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        <tr>
-            <th>Total Monthly Payments</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        <tr>
-            <th>Total Principal & Interest Payments</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        <tr>
-            <th>Total Interest Paid</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        <tr>
-            <th>Total P.M.I. Paid</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
-        <tr class="bg-info" style="color: white;">
-            <th>Total Interest and P.M.I.</th>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-            <td>---</td>
-        </tr>
+<!--        <tr>-->
+<!--            <th>Loan Term</th>-->
+<!--            <th>30 Year</th>-->
+<!--            <th>20 Year</th>-->
+<!--            <th>15 Year</th>-->
+<!--            <th>Adjustable Rate</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>Monthly Principal & Interest</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>Total Monthly Payments</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>Total Principal & Interest Payments</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>Total Interest Paid</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>Total P.M.I. Paid</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
+<!--        <tr class="bg-info" style="color: white;">-->
+<!--            <th>Total Interest and P.M.I.</th>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--            <td>-&#45;&#45;</td>-->
+<!--        </tr>-->
         <tr style="text-align: center;" class="table-warning text-center">
             <td colspan="5" style="font-style: italic;">Conventional Loans Total Mortgage Insurance is calculated by 78% of the purchase price. You can request the M.I. to be removed at 80%</td>
         </tr>
