@@ -101,6 +101,20 @@ public class LoanController {
             Double loanAmount = loan.getLoanDetails().getDownPayment()*loan.getLoanDetails().getPurchasePrice()/100;
             model.addAttribute("loanAmount", loanAmount);
 
+            //Principal & Interest
+            Double principal = loan.getLoanDetails().getPurchasePrice() - loanAmount;
+            Double monthlyRate = loan.getLoanDetails().getInterestRate()/100/12;
+            Double paymentAndInterest;
+
+            //15 years
+            long fifteenYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 15*12))/((Math.pow(1+monthlyRate,15*12))-1));
+            model.addAttribute("fifteenYrsPAndI", fifteenYrsPAndI);
+            //20 years
+            long twentyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 20*12))/((Math.pow(1+monthlyRate,20*12))-1));
+            model.addAttribute("twentyYrsPAndI", twentyYrsPAndI);
+            //30 years
+            long thirtyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 30*12))/((Math.pow(1+monthlyRate,30*12))-1));
+            model.addAttribute("thirtyYrsPAndI", thirtyYrsPAndI);
 
             return "loans/compare";
         } else {
