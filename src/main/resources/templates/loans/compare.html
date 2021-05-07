@@ -44,6 +44,8 @@
     <tr>
         <th>Purchase Price</th>
         <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
+        <th>Interest Rate</th>
+        <td th:text="${loan.loanDetails.interestRate}"></td>
         <th>Home Owners Insurance (e)</th>
         <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
         <th>Real Estate Taxes (e)</th>
@@ -68,10 +70,6 @@
         </tr>
        <tr>
             <th>Loan Amount</th>
-            <td style="text-align: center;">---</td>
-
-
-            <th style="text-align: right;">Interest Rate</th>
             <td style="text-align: center;">---</td>
         </tr>
 </table>

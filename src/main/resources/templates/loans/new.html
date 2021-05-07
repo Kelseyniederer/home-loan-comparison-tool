@@ -52,6 +52,12 @@
     </div>
 
     <div class="form-group">
+        <label>Interest Rate
+            <input th:field="${loan.loanDetails.interestRate}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.interestRate}"></p>
+    </div>
+
+    <div class="form-group">
         <label>Property Type
             <select th:field="${loan.loanDetails.propertyType}">
                 <option value="Single Family Residence">Single Family Residence</option>
@@ -86,6 +92,8 @@
             <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
     </div>
+
+
 <!--    <div class="form-group">-->
 <!--        <label>HOA Fees-->
 <!--            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>-->
