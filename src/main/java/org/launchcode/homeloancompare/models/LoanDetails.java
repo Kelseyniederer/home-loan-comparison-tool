@@ -20,7 +20,7 @@ public class LoanDetails extends AbstractEntity {
 
     private String estimatedCreditScore;
 
-    private String occupancyType;
+    private Integer downPayment;
 
     private String transactionType;
 
@@ -44,11 +44,14 @@ public class LoanDetails extends AbstractEntity {
 
     private Integer hoaFees;
 
+    private Integer propertyTax;
+
 
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
                        Loan loan, @NotNull(message = "Please enter your estimated credit score") String estimatedCreditScore,
                        String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
-                        ,Double interestRate,String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees, Integer realEstateInsurance, Integer hoaFees) {
+                        , Double interestRate, String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees,
+                       Integer realEstateInsurance, Integer hoaFees, Integer propertyTax, Integer downPayment) {
         this.borrowersEmail = borrowersEmail;
         this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
@@ -63,6 +66,8 @@ public class LoanDetails extends AbstractEntity {
         this.lenderFees = lenderFees;
         this.interestRate = interestRate;
         this.hoaFees = hoaFees;
+        this.propertyTax = propertyTax;
+        this.downPayment = downPayment;
     }
 
     public LoanDetails() {
@@ -152,19 +157,19 @@ public class LoanDetails extends AbstractEntity {
         this.lenderFees = lenderFees;
     }
 
-    public Integer getHoaFees() {
-        return hoaFees;
-    }
+    public Integer getHoaFees() { return hoaFees; }
 
-    public void setHoaFees(Integer hoaFees) {
-        this.hoaFees = hoaFees;
-    }
+    public void setHoaFees(Integer hoaFees) { this.hoaFees = hoaFees; }
 
-    public Integer getRealEstateInsurance() {
-        return realEstateInsurance;
-    }
+    public Integer getRealEstateInsurance() { return realEstateInsurance; }
 
-    public void setRealEstateInsurance(Integer realEstateInsurance) {
-        this.realEstateInsurance = realEstateInsurance;
-    }
+    public void setRealEstateInsurance(Integer realEstateInsurance) { this.realEstateInsurance = realEstateInsurance; }
+
+    public Integer getPropertyTax() { return propertyTax; }
+
+    public void setPropertyTax(Integer propertyTax) { this.propertyTax = propertyTax; }
+
+    public Integer getDownPayment() { return downPayment; }
+
+    public void setDownPayment(Integer downPayment) { this.downPayment = downPayment; }
 }

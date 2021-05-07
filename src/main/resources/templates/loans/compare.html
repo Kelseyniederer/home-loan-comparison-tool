@@ -21,22 +21,23 @@
     </tr>
     <tr>
         <th>Subject Property</th>
-        <td th:text="${loan.subjectProperty}"></td>
+        <td th:text="${loan.subjectProperty}" style="text-align: left;"></td>
         <td></td>
     </tr>
     <tr>
         <th>ZIP Code</th>
-        <td th:text="${loan.loanDetails.zipCode}" value="${loan.loanDetails.zipCode}" id="zip"></td>
+        <td th:text="${loan.loanDetails.zipCode}" value="${loan.loanDetails.zipCode}" id="zip style="text-align: center;""></td>
         <td></td>
-    </tr>
-    <tr>
-        <th>Assuming a Credit Score of</th>
-        <td th:text="${loan.loanDetails.estimatedCreditScore}"></td>
     </tr>
     <tr>
         <th>Property Type</th>
         <td th:text="${loan.loanDetails.propertyType}"></td>
     </tr>
+    <tr>
+        <th>Assuming a Credit Score of</th>
+        <td th:text="${loan.loanDetails.estimatedCreditScore}"></td>
+    </tr>
+
 </table>
 
 
@@ -64,45 +65,15 @@
             <th>Purchase Price</th>
             <td style="text-align: center;" th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
 
-
             <th style="text-align: right;">Down Payment</th>
-            <td style="text-align: center;">---</td>
-        </tr>
-       <tr>
+            <td style="text-align: center;" th:text="${loan.loanDetails.downPayment} + '%'"></td>
+
             <th>Loan Amount</th>
             <td style="text-align: center;">---</td>
         </tr>
 </table>
 
-</table>
-<!--<table class="table table-striped">-->
-<!--    <tr style="text-align: center;" class="table-info text-center">-->
-<!--        <th colspan="5">Mortgage Information</th>-->
-<!--    </tr>-->
 
-<!--    <tr>-->
-<!--        <th>Loan Term</th>-->
-<!--        <th>30 Year</th>-->
-<!--        <th>20 Year</th>-->
-<!--        <th>15 Year</th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th>Purchase Price</th>-->
-<!--        <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th>Down Payment</th>-->
-<!--        <td>-&#45;&#45;</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th>Loan Amount</th>-->
-<!--        <td>-&#45;&#45;</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <th>Interest Rate</th>-->
-<!--        <td>-&#45;&#45;</td>-->
-<!--    </tr>-->
-<!--</table>-->
 <table class="table table-striped">
     <tr style="text-align: center;" class="table-info text-center">
         <th colspan="5">Estimate Monthly Payment</th>
@@ -122,15 +93,15 @@
     </tr>
     <tr>
         <th>Property Taxes</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
+        <td th:text="${loan.loanDetails.propertyTax}" value="${loan.loanDetails.propertyTax}" class="propertyTax"></td>
+        <td th:text="${loan.loanDetails.propertyTax}" value="${loan.loanDetails.propertyTax}" class="propertyTax"></td>
+        <td th:text="${loan.loanDetails.propertyTax}" value="${loan.loanDetails.propertyTax}" class="propertyTax"></td>
     </tr>
     <tr>
         <th>Home Owners Insurance</th>
-        <td>---</td>
-        <td>---</td>
-        <td>---</td>
+        <td th:text="${loan.loanDetails.homeOwnersInsurance}" value="${loan.loanDetails.homeOwnersInsurance}" class="homeOwnersInsurance"></td>
+        <td th:text="${loan.loanDetails.homeOwnersInsurance}" value="${loan.loanDetails.homeOwnersInsurance}" class="homeOwnersInsurance"></td>
+        <td th:text="${loan.loanDetails.homeOwnersInsurance}" value="${loan.loanDetails.homeOwnersInsurance}" class="homeOwnersInsurance"></td>
     </tr>
     <tr>
         <th>HOA Fees</th>

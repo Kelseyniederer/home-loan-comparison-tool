@@ -26,14 +26,22 @@
             <input th:field="${loan.subjectProperty}" class="form-control"></label>
         <p class="error" th:errors="${loan.subjectProperty}"></p>
     </div>
+
+    <div class="form-group">
+        <label>ZIP Code
+            <input th:field="${loan.loanDetails.zipCode}" id="zip"  type="text" pattern="[0-9]{5}"></label>
+    </div>
+
     <div class="form-group">
         <label>Home Price
             <input th:field="${loan.loanDetails.purchasePrice}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.purchasePrice}"></p>
     </div>
+
     <div class="form-group">
-        <label>ZIP Code
-        <input th:field="${loan.loanDetails.zipCode}" id="zip"  type="text" pattern="[0-9]{5}"></label>
+        <label>Down Payment (%)
+            <input th:field="${loan.loanDetails.downPayment}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.downPayment}"></p>
     </div>
 
     <div class="form-group">
@@ -83,8 +91,8 @@
 
     <div class="form-group">
         <label>Property Tax
-            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>
-        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>
+            <input th:field="${loan.loanDetails.propertyTax}" class="form-control"></label>
+        <p class="error" th:errors="${loan.loanDetails.propertyTax}"></p>
     </div>
 
     <div class="form-group">
