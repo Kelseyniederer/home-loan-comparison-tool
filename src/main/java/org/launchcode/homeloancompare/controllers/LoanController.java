@@ -96,6 +96,12 @@ public class LoanController {
             model.addAttribute("closingDate", customClosingDate);
             model.addAttribute("firstPaymentDate", customFirstPaymentDate);
 
+
+            //Calculate Loan Amount
+            Double loanAmount = loan.getLoanDetails().getDownPayment()*loan.getLoanDetails().getPurchasePrice()/100;
+            model.addAttribute("loanAmount", loanAmount);
+
+
             return "loans/compare";
         } else {
             return "loans/index";

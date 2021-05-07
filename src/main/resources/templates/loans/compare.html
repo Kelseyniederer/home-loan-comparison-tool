@@ -69,7 +69,7 @@
             <td style="text-align: center;" th:text="${loan.loanDetails.downPayment} + '%'"></td>
 
             <th>Loan Amount</th>
-            <td style="text-align: center;">---</td>
+            <td style="text-align: center;" th:text="'$' + ${loanAmount}"></td>
         </tr>
 </table>
 
