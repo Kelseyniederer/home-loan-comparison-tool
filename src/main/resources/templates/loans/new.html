@@ -62,16 +62,6 @@
         </label>
     </div>
 
-    <div class="form-group">
-        <label>Length of Loan
-            <select th:field="${loan.loanDetails.occupancyType}">
-                <option value="30 Years">30 Years</option>
-                <option value="15 Years">15 Years</option>
-                <option value="10 Years">10 Years</option>
-            </select>
-        </label>
-    </div>
-
     <div>
         <label>Closing Date
             <input type="date" th:field="${loan.loanDetails.closingDate}" class="form-control" id="customDate"/>
@@ -103,6 +93,6 @@
 <!--    </div>-->
 
     <div class="form-group">
-        <input type="submit" value="See Your Options" class="btn btn-success"></div> </form>
+        <input type="submit" value="Calculate Your Payment" class="btn btn-success"></div> </form>
 </body>
 </html>

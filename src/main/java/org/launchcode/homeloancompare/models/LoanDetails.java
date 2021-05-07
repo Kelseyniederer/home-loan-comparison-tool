@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class LoanDetails extends AbstractEntity {
 
+
     @NotEmpty(message = "Please enter your email address")
     @Email(message = "Invalid Email")
     private String borrowersEmail;
@@ -39,14 +40,14 @@ public class LoanDetails extends AbstractEntity {
 
     private Integer lenderFees;
 
+
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
                        Loan loan, @NotNull(message = "Please enter your estimated credit score") String estimatedCreditScore,
-                       String occupancyType, String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
+                       String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
                         ,String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees, Integer realEstateInsurance) {
         this.borrowersEmail = borrowersEmail;
         this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
-        this.occupancyType = occupancyType;
         this.transactionType = transactionType;
         this.propertyType = propertyType;
         this.purchasePrice = purchasePrice;
@@ -93,13 +94,6 @@ public class LoanDetails extends AbstractEntity {
         this.homeOwnersInsurance = homeOwnersInsurance;
     }
 
-    public String getOccupancyType() {
-        return occupancyType;
-    }
-
-    public void setOccupancyType(String occupancyType) {
-        this.occupancyType = occupancyType;
-    }
 
     public String getZipCode() {
         return zipCode;
