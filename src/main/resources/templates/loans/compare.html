@@ -45,7 +45,7 @@
         <th>Purchase Price</th>
         <td th:text="'$' + ${loan.loanDetails.purchasePrice}"></td>
         <th>Interest Rate</th>
-        <td th:text="${loan.loanDetails.interestRate}"></td>
+        <td th:text="${loan.loanDetails.interestRate} + '%'"></td>
         <th>Home Owners Insurance (e)</th>
         <td th:text="'$' + ${loan.loanDetails.homeOwnersInsurance}"></td>
         <th>Real Estate Taxes (e)</th>

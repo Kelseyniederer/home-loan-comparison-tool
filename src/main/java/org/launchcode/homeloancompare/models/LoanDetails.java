@@ -42,11 +42,13 @@ public class LoanDetails extends AbstractEntity {
 
     private Double interestRate;
 
+    private Integer hoaFees;
+
 
     public LoanDetails(@NotEmpty(message = "Please enter your email address") @Email(message = "Invalid Email") String borrowersEmail,
                        Loan loan, @NotNull(message = "Please enter your estimated credit score") String estimatedCreditScore,
                        String transactionType, String propertyType, Integer purchasePrice, Integer homeOwnersInsurance
-                        ,Double interestRate,String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees, Integer realEstateInsurance) {
+                        ,Double interestRate,String closingDate, String firstPaymentDate, String zipCode, Integer lenderFees, Integer realEstateInsurance, Integer hoaFees) {
         this.borrowersEmail = borrowersEmail;
         this.loan = loan;
         this.estimatedCreditScore = estimatedCreditScore;
@@ -60,6 +62,7 @@ public class LoanDetails extends AbstractEntity {
         this.zipCode = zipCode;
         this.lenderFees = lenderFees;
         this.interestRate = interestRate;
+        this.hoaFees = hoaFees;
     }
 
     public LoanDetails() {
@@ -147,6 +150,14 @@ public class LoanDetails extends AbstractEntity {
 
     public void setLenderFees(Integer lenderFees) {
         this.lenderFees = lenderFees;
+    }
+
+    public Integer getHoaFees() {
+        return hoaFees;
+    }
+
+    public void setHoaFees(Integer hoaFees) {
+        this.hoaFees = hoaFees;
     }
 
     public Integer getRealEstateInsurance() {
