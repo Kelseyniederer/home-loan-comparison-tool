@@ -18,10 +18,10 @@ public class LoanController {
     @Autowired
     private LoanRepository loanRepository;
 
-// Displays all loan inquiries
+    // Displays all loan inquiries
     @GetMapping
     public String displayAllLoanInquiries(Model model){
-            model.addAttribute("loanInquiries", loanRepository.findAll());
+        model.addAttribute("loanInquiries", loanRepository.findAll());
         return "loans/index";
     }
 
@@ -98,34 +98,37 @@ public class LoanController {
 
 
             //Calculate Loan Amount
-            Double loanAmount = loan.getLoanDetails().getDownPayment()*loan.getLoanDetails().getPurchasePrice()/100;
+            long loanAmount = Math.round(loan.getLoanDetails().getDownPayment()*loan.getLoanDetails().getPurchasePrice()/100);
             model.addAttribute("loanAmount", loanAmount);
 
+            long actualLoanAmount = Math.round(loan.getLoanDetails().getPurchasePrice() - loanAmount);
+            model.addAttribute("actualLoanAmount", actualLoanAmount);
+
             //Calculate Principal & Interest
-            Double principal = loan.getLoanDetails().getPurchasePrice() - loanAmount;
+            long principal = loan.getLoanDetails().getPurchasePrice() - loanAmount;
             Double monthlyRate = loan.getLoanDetails().getInterestRate()/100/12;
             Double paymentAndInterest;
 
-                //15 years
-                long fifteenYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 15*12))/((Math.pow(1+monthlyRate,15*12))-1));
-                model.addAttribute("fifteenYrsPAndI", fifteenYrsPAndI);
+            //15 years
+            long fifteenYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 15*12))/((Math.pow(1+monthlyRate,15*12))-1));
+            model.addAttribute("fifteenYrsPAndI", fifteenYrsPAndI);
 
-                //20 years
-                long twentyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 20*12))/((Math.pow(1+monthlyRate,20*12))-1));
-                model.addAttribute("twentyYrsPAndI", twentyYrsPAndI);
-                //30 years
-                long thirtyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 30*12))/((Math.pow(1+monthlyRate,30*12))-1));
-                model.addAttribute("thirtyYrsPAndI", thirtyYrsPAndI);
+            //20 years
+            long twentyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 20*12))/((Math.pow(1+monthlyRate,20*12))-1));
+            model.addAttribute("twentyYrsPAndI", twentyYrsPAndI);
+            //30 years
+            long thirtyYrsPAndI = Math.round(principal*monthlyRate*(Math.pow(1+monthlyRate, 30*12))/((Math.pow(1+monthlyRate,30*12))-1));
+            model.addAttribute("thirtyYrsPAndI", thirtyYrsPAndI);
 
-        // Calculate total monthly payment 15 Years
+            // Calculate total monthly payment 15 Years
             long monthlyPayment15yrs = Math.round(fifteenYrsPAndI + loan.getLoanDetails().getPropertyTax()+loan.getLoanDetails().getHomeOwnersInsurance()+loan.getLoanDetails().getHoaFees());
             model.addAttribute("monthlyPayment15yrs", monthlyPayment15yrs);
 
-        // Calculate total monthly payment 20 Years
+            // Calculate total monthly payment 20 Years
             long monthlyPayment20yrs = Math.round(twentyYrsPAndI + loan.getLoanDetails().getPropertyTax()+loan.getLoanDetails().getHomeOwnersInsurance()+loan.getLoanDetails().getHoaFees());
             model.addAttribute("monthlyPayment20yrs", monthlyPayment20yrs);
 
-        // Calculate total monthly payment 30 Years
+            // Calculate total monthly payment 30 Years
             long monthlyPayment30yrs = Math.round(thirtyYrsPAndI + loan.getLoanDetails().getPropertyTax()+loan.getLoanDetails().getHomeOwnersInsurance()+loan.getLoanDetails().getHoaFees());
             model.addAttribute("monthlyPayment30yrs", monthlyPayment30yrs);
 

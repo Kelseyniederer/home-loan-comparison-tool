@@ -9,14 +9,14 @@
 
 <form method="post" action="/loans/new">
     <div class="form-group">
-    <label>Name
-    <input th:field="${loan.borrowersName}" class="form-control"></label>
+        <label>Name
+            <input th:field="${loan.borrowersName}" class="form-control"></label>
         <p class="error" th:errors="${loan.borrowersName}"></p>
 
     </div>
     <div class="form-group">
-    <label>Email
-        <input th:field="${loan.loanDetails.borrowersEmail}" class="form-control"></label>
+        <label>Email
+            <input th:field="${loan.loanDetails.borrowersEmail}" class="form-control"></label>
         <p class="error" th:errors="${loan.loanDetails.borrowersEmail}"></p>
 
     </div>
@@ -108,11 +108,11 @@
     </div>
 
 
-<!--    <div class="form-group">-->
-<!--        <label>HOA Fees-->
-<!--            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>-->
-<!--        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>-->
-<!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--        <label>HOA Fees-->
+    <!--            <input th:field="${loan.loanDetails.homeOwnersInsurance}" class="form-control"></label>-->
+    <!--        <p class="error" th:errors="${loan.loanDetails.homeOwnersInsurance}"></p>-->
+    <!--    </div>-->
 
     <div class="form-group">
         <input type="submit" value="Calculate Your Payment" class="btn btn-success"></div> </form>
